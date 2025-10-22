@@ -45,7 +45,7 @@
   --light-bg-secondary: #f6f8fa;
   --light-text-primary: #24292f; /* Darker for better contrast */
   --light-text-secondary: #57606a; /* Darker for better contrast */
-  --light-text-muted: #6e7781; /* Darker for better contrast */
+  --light-text-muted: #545d68; /* Improved contrast for accessibility */
   --light-accent: #0969da; /* More accessible blue */
   --light-border: #d0d7de;
   --light-terminal-dark: #f6f8fa;
@@ -763,6 +763,11 @@ body {
 
 .nav-toggle[aria-expanded='true'] .hamburger::after {
   transform: translateY(-8px) rotate(90deg);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {

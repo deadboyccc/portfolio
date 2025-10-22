@@ -451,29 +451,35 @@ body {
 }
 
 .job-header {
-  margin-bottom: 15px;
-  display: flex;
-  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-xs);
   align-items: baseline;
-  gap: 10px;
 }
 
 .job-header h3 {
   color: var(--accent);
-  font-size: 1.3rem;
-  /* font-family: 'Inter', sans-serif; - Removed to enforce JetBrains Mono */
+  font-size: var(--font-size-xl);
+  grid-column: 1 / -1;
 }
 
 .company {
   color: var(--text-primary);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: var(--font-size-lg);
 }
 
 .period {
   color: var(--text-muted);
-  font-size: 14px;
-  margin-left: auto;
+  font-size: var(--font-size-sm);
+  text-align: right;
+}
+
+.location {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  grid-column: 1 / -1;
 }
 
 .job-highlights {
@@ -631,15 +637,16 @@ body {
 .cert-list {
   list-style: none;
   padding-left: 0;
+  margin-bottom: var(--space-lg);
 }
 
 .cert-list li {
   color: var(--text-secondary);
-  margin-bottom: 10px;
-  padding-left: 25px;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-xl);
   position: relative;
-  /* font-family: 'Inter', sans-serif; - Removed to enforce JetBrains Mono */
-  font-size: 15px;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
 }
 
 .cert-list li::before {
@@ -648,8 +655,31 @@ body {
   position: absolute;
   left: 0;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: var(--font-size-lg);
   line-height: 1;
+}
+
+.learning-areas {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border);
+}
+
+.section-subtitle {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-md);
+}
+
+.learning-areas .cert-list {
+  margin-bottom: 0;
+}
+
+.learning-areas .cert-list li::before {
+  content: '▹';
 }
 
 /* Footer */

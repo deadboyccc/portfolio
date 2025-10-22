@@ -6,7 +6,24 @@
 }
 
 :root {
-  /* Dark Mode Defaults (GitHub-inspired) */
+  /* Spacing Scale (8px base) */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Layout */
+  --header-height: 50px;
+  --navbar-height: 40px;
+  --content-width-max: 1200px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Dark Mode Colors (GitHub-inspired) */
   --bg-primary: #0d1117;
   --bg-secondary: #161b22;
   --text-primary: #c9d1d9;
@@ -14,16 +31,14 @@
   --text-muted: #6a737d;
   --accent: #238636;
   --border: #30363d;
-  --success: #00ff00;
-  --warning: #ffff00;
-  --error: #ff0000;
+  --success: #2ea043;
+  --warning: #d29922;
+  --error: #f85149;
   --terminal-dark: #010409;
   --terminal-light: #161b22;
   --shadow-color: rgba(0, 0, 0, 0.4);
-  --header-height: 50px; /* New variable for header height */
-  --navbar-height: 40px; /* Approximate navbar height */
 
-  /* Light Mode Variables (GitHub-inspired) */
+  /* Light Mode Colors (GitHub-inspired) */
   --light-bg-primary: #ffffff;
   --light-bg-secondary: #f6f8fa;
   --light-text-primary: #24292e;
@@ -34,6 +49,18 @@
   --light-terminal-dark: #f6f8fa;
   --light-terminal-light: #ffffff;
   --light-shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-size-xs: 0.813rem;   /* 13px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-xxl: 2rem;      /* 32px */
+  --font-size-huge: 3rem;     /* 48px */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
 }
 
 /* Light Mode Overrides */
@@ -55,12 +82,15 @@ html {
 }
 
 body {
-  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace; /* Ensured JetBrains Mono is global */
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: var(--font-size-md);
   background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Theme Toggle */
@@ -144,16 +174,16 @@ body {
     var(--terminal-light-rgb-r, 22),
     var(--terminal-light-rgb-g, 27),
     var(--terminal-light-rgb-b, 34),
-    0.8
+    0.9
   );
-  padding: 12px 20px;
+  padding: var(--space-sm) var(--space-md);
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: var(--header-height); /* Use variable */
+  height: var(--header-height);
   box-sizing: border-box;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -199,32 +229,50 @@ body {
 /* Navigation Bar */
 .navbar {
   position: sticky;
-  top: var(--header-height); /* Sticks exactly below the header */
+  top: var(--header-height);
   z-index: 999;
   background: rgba(
     var(--terminal-light-rgb-r, 22),
     var(--terminal-light-rgb-g, 27),
     var(--terminal-light-rgb-b, 34),
-    0.7
+    0.9
   );
-  padding: 10px 20px;
+  padding: var(--space-sm) var(--space-md);
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: var(--space-xl);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .navbar a {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 15px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  font-size: var(--font-size-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  transform: scaleX(1);
 }
 
 .navbar a:hover,

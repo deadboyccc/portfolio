@@ -14,25 +14,25 @@
 </head>
 
 <body>
-  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
-  <label for="theme-toggle" class="theme-toggle-label">
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" aria-label="Toggle dark/light theme">
+  <label for="theme-toggle" class="theme-toggle-label" aria-hidden="true">
     <i class="fas fa-sun sun-icon"></i>
     <i class="fas fa-moon moon-icon"></i>
   </label>
 
   <!-- Header Section -->
-  <header class="terminal-header">
-    <div class="terminal-controls">
+  <header class="terminal-header" role="banner">
+    <div class="terminal-controls" aria-hidden="true">
       <span class="control close"></span>
       <span class="control minimize"></span>
       <span class="control maximize"></span>
     </div>
-    <div class="terminal-title">ahmed@portfolio:~$</div>
+    <div class="terminal-title" role="heading" aria-level="2">ahmed@portfolio:~$</div>
   </header>
 
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <a href="#hero">Home</a>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#hero" aria-current="page">Home</a>
     <a href="#contact">Contact</a>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -46,13 +46,13 @@
     <main class="terminal-content">
       <!-- Hero Section -->
       <section id="hero" class="section">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command">whoami</span>
+        <div class="command-line" role="presentation">
+          <span class="prompt" aria-hidden="true">$</span>
+          <span class="command" aria-label="Command: whoami">whoami</span>
         </div>
-        <div class="output">
-          <h1 class="hero-title">Ahmed Mohammed Ali ✨</h1>
-          <p class="hero-subtitle">Backend Developer & Integration Engineer 🚀</p>
+        <div class="output" role="region" aria-label="About me">
+          <h1 class="hero-title">Ahmed Mohammed Ali <span aria-hidden="true">✨</span></h1>
+          <p class="hero-subtitle">Backend Developer & Integration Engineer <span aria-hidden="true">🚀</span></p>
           <div class="hero-tags">
             <span class="tag">Backend Developer</span>
             <span class="tag">Integration Specialist</span>
@@ -86,12 +86,12 @@
             <span>Baghdad, Iraq 📍</span>
           </div>
           <div class="contact-item">
-            <i class="fab fa-linkedin"></i>
-            <a href="https://www.linkedin.com/in/deadboyccc" target="_blank">linkedin.com/in/deadboyccc 🔗</a>
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/deadboyccc" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">linkedin.com/in/deadboyccc 🔗</a>
           </div>
           <div class="contact-item">
-            <i class="fab fa-github"></i>
-            <a href="https://github.com/deadboyccc" target="_blank">github.com/deadboyccc 🐙</a>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/deadboyccc" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">github.com/deadboyccc 🐙</a>
           </div>
         </div>
       </section>

@@ -7,475 +7,284 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <meta name="description" content="Ahmed Mohammed Ali — Senior Backend Engineer (Java, Spring, Cloud-native microservices, FinTech)">
 
   <style>
-    /* ==========================
-       Reset & Base
-       ========================== */
-    :root{
-      /* Core Colors */
-      --bg: #0d1117;
-      --panel: #161b22;
-      --muted: #8b949e;
-      --text: #c9d1d9;
-      --accent: #2ea043; /* GitHub Green */
-      
-      /* Dynamic Visuals */
-      --glass: rgba(255,255,255,0.03);
-      --border-color: rgba(240,246,252,0.1); /* FIX: Variable border color */
-      --shadow-color: rgba(0,0,0,0.5);       /* FIX: Variable shadow opacity */
-      --header-bg: rgba(13, 17, 23, 0.85);   /* FIX: Background for sticky header */
-
-      /* Layout */
-      --radius: 12px;
-      --max-width: 1100px;
-      --container-pad: 24px;
-      --focus: 3px solid rgba(46,160,67,0.4);
-    }
-
-    /* Light theme variables */
-    [data-theme="light"]{
+    :root {
       --bg: #ffffff;
-      --panel: #f6f8fa;
-      --muted: #57606a;
-      --text: #24292f;
-      --accent: #0969da; /* Blue for light mode contrast */
-      
-      /* FIX: Inverted visual effects for visibility on white */
-      --glass: rgba(0,0,0,0.04);
-      --border-color: rgba(27,31,36,0.15); 
-      --shadow-color: rgba(140,149,159,0.2);
-      --header-bg: rgba(255, 255, 255, 0.9);
+      --fg: #1a1a1a;
+      --accent: #000000;
+      --dim: #666666;
+      --border: #eeeeee;
+      --code-bg: #f7f7f7;
+      --highlight: #2563eb;
+      --max-width: 900px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      min-height:100vh;
-      transition: background 0.3s ease, color 0.3s ease;
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --fg: #e5e5e5;
+      --accent: #ffffff;
+      --dim: #a0a0a0;
+      --border: #1f1f1f;
+      --code-bg: #161616;
+      --highlight: #60a5fa;
     }
 
-    a{color:inherit; text-decoration: none;}
-    img{max-width:100%;height:auto}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s ease;
+    }
 
-    /* ==========================
-       Layout
-       ========================== */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:24px var(--container-pad);}
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 80px 40px; }
+
+    /* Typography */
+    h1 { font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 8px; }
+    h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    h2::after { content: ""; height: 1px; background: var(--border); flex: 1; }
+    h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
 
     /* Header */
-    header.app-header{
-      position:sticky;
-      top:0;
-      z-index:60;
-      background: var(--header-bg);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      padding:16px 0;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 24px;
-    }
-    .bar{display:flex;align-items:center;gap:12px;justify-content:space-between}
+    header { margin-bottom: 64px; }
+    .contact-grid { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 20px; font-size: 14px; }
+    .contact-link { color: var(--dim); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+    .contact-link:hover { color: var(--highlight); }
 
-    .title-row{display:flex;gap:16px;align-items:center}
+    /* Sections */
+    section { margin-bottom: 64px; }
+    .summary-text { font-size: 18px; color: var(--fg); margin-bottom: 24px; font-weight: 400; line-height: 1.5; }
     
-    .terminal-style{
-      background:var(--panel);
-      padding:10px 14px;
-      border-radius:10px;
-      border:1px solid var(--border-color);
-      box-shadow:0 4px 12px var(--shadow-color);
-      flex-shrink: 0;
-    }
-    
-    .name{font-size:20px;font-weight:700;color:var(--accent); line-height: 1.2;}
-    .subtitle{font-size:13px;color:var(--muted); margin-top: 4px;}
-
-    /* Utility Links */
-    .quick-links{display:flex;gap:10px;align-items:center}
-    .btn{
-      background:var(--panel);
-      border:1px solid var(--border-color);
-      color: var(--text);
-      padding:8px 14px;
-      border-radius:8px;
-      font-weight:600;
-      cursor:pointer;
-      font-size: 13px;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-    .btn:hover{
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Main Grid */
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 340px;
-      gap:24px;
-      align-items:start;
-    }
-
-    /* Cards */
-    section.card{
-      background:var(--panel);
-      border-radius:12px;
-      padding:24px;
-      border:1px solid var(--border-color);
-      position:relative;
-      box-shadow: 0 4px 6px var(--shadow-color);
-    }
-    section.card + section.card{margin-top:20px}
-
-    h3{color:var(--accent);font-size:16px;margin-bottom:12px; text-transform: uppercase; letter-spacing: 0.5px;}
-    p,li{color:var(--text);font-size:14px;line-height:1.7}
-    ul.bullets{padding-left: 18px; margin-top: 8px;} 
-    ul.bullets li { margin-bottom: 6px; }
-    
-    /* Tags */
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-    .tag{
-      background:var(--glass);
-      border:1px solid var(--border-color);
-      color: var(--text);
-      padding:4px 10px;
-      border-radius:4px;
-      font-size:12px;
-      font-weight: 500;
-    }
-
-    /* Sidebar */
-    aside.sidebar{position:sticky; top: 100px; z-index:3;} 
-    
-    .contact-list{display:flex;flex-direction:column;gap:12px}
-    .contact-list a{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      padding:12px;
-      border-radius:8px;
-      background:var(--glass);
-      border:1px solid var(--border-color);
-      transition: all 0.2s;
-      
-      /* FIX: Long emails breaking mobile layout */
-      word-break: break-all; 
-    }
-    .contact-list a:hover{background:var(--panel); border-color: var(--accent);}
-    .contact-list a .label{font-size: 13px;}
-    .contact-list i { width: 16px; text-align: center; color: var(--muted); }
+    /* Skills */
+    .skills-category { margin-bottom: 20px; display: grid; grid-template-columns: 200px 1fr; gap: 16px; }
+    .skills-label { font-weight: 600; font-size: 14px; color: var(--accent); }
+    .skills-list { color: var(--dim); font-size: 14px; }
 
     /* Experience */
-    .experience-item{
-      padding:16px;
-      border-radius:8px;
-      background:var(--glass); 
-      border:1px solid var(--border-color);
-      margin-bottom:16px;
-    }
-    .experience-item:last-child { margin-bottom: 0; }
-    
-    .meta{display:flex;gap:12px;flex-wrap:wrap; justify-content: space-between; margin-bottom: 8px; align-items: baseline;}
-    .meta .role{font-weight:700; color: var(--text); font-size: 15px;}
-    .meta .muted{font-size: 12px; font-family: sans-serif; opacity: 0.8;}
+    .experience-item { margin-bottom: 40px; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .exp-title { font-weight: 600; font-size: 16px; color: var(--accent); }
+    .exp-meta { font-size: 13px; color: var(--dim); font-family: 'JetBrains Mono'; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 14px; color: var(--fg); }
+    .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--dim); }
 
-    /* Skills Grid */
-    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-    .skill-pill{
-      padding:8px;
-      font-size: 13px;
-      text-align: center;
-      border-radius:6px;
-      background:var(--glass);
-      border:1px solid var(--border-color);
-    }
+    /* Project Cards */
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .project-card { border: 1px solid var(--border); padding: 20px; border-radius: 4px; }
+    .project-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
+    .project-card p { font-size: 13px; color: var(--dim); }
+
+    /* Theme Toggle */
+    .theme-toggle { position: fixed; top: 40px; right: 40px; background: none; border: 1px solid var(--border); color: var(--dim); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
 
     /* Footer */
-    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px; padding-bottom: 40px;}
-    .kbd{background:var(--glass); border: 1px solid var(--border-color); padding:4px 7px;border-radius:6px; font-size: 11px;}
+    footer { border-top: 1px solid var(--border); padding-top: 40px; font-size: 13px; color: var(--dim); text-align: center; }
 
-    /* ==========================
-       Responsive
-       ========================== */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      aside.sidebar{position:static;} 
-      
-      /* Reorder: Sidebar (Contact) moves to top on mobile */
-      .grid { display: flex; flex-direction: column; }
-      .content-section { order: 2; }
-      .sidebar { order: 1; width: 100%; }
-      
-      .bar{flex-direction:column;align-items:flex-start;gap:12px}
-      .quick-links{width:100%; justify-content: space-between;}
-      .quick-links .btn{flex:1; text-align:center}
-      
-      header.app-header { position: relative; } 
+    @media (max-width: 768px) {
+      .container { padding: 40px 24px; }
+      .skills-category { grid-template-columns: 1fr; gap: 4px; }
+      .exp-header { flex-direction: column; gap: 4px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .theme-toggle { top: 20px; right: 20px; }
     }
-
-    @media (max-width:500px){
-      .wrap{padding: 12px 16px;}
-      .name{font-size:18px}
-      .skills{grid-template-columns:repeat(2,1fr)} 
+    
+    @media print {
+      .theme-toggle { display: none; }
+      .container { padding: 0; }
     }
-
-    a:focus,button:focus{outline:none;box-shadow: 0 0 0 3px var(--accent);}
   </style>
 </head>
-<body>
-  <a class="sr-only" href="#main">Skip to content</a>
-  
-  <div class="wrap" id="page-wrap">
-    <header class="app-header">
-      <div class="bar">
-        <div class="title-row">
-          <div class="terminal-style" aria-hidden="true">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff5f56;margin-right:6px"></span>
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ffbd2e;margin-right:6px"></span>
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27ca3f"></span>
-          </div>
-          <div>
-            <div class="name">Ahmed Mohammed Ali</div>
-            <div class="subtitle">Senior Backend Engineer</div>
-          </div>
-        </div>
+<body data-theme="dark">
 
-        <div class="quick-links" role="toolbar" aria-label="Actions">
-          <button id="themeBtn" class="btn" title="Toggle theme" aria-pressed="false">
-            </button>
-          <a class="btn" href="#contact" title="Contact">Contact</a>
-          <a class="btn" href="#projects" title="Projects">Projects</a>
-        </div>
+  <button class="theme-toggle" id="themeBtn" aria-label="Toggle Theme">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <div class="container">
+    <header>
+      <h1>Ahmed Mohammed Ali</h1>
+      <p class="mono" style="color:var(--highlight); font-weight:500;">Senior Backend Engineer</p>
+      
+      <div class="contact-grid">
+        <a href="mailto:ahmed.mohammed.ali9999@gmail.com" class="contact-link"><i class="fa-regular fa-envelope"></i> ahmed.mohammed.ali9999@gmail.com</a>
+        <a href="https://wa.me/9647711455264" class="contact-link"><i class="fa-brands fa-whatsapp"></i> +964 771 145 5264</a>
+        <a href="https://linkedin.com/in/deadboyccc" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/deadboyccc" class="contact-link"><i class="fa-brands fa-github"></i> GitHub</a>
+        <span class="contact-link"><i class="fa-solid fa-location-dot"></i> Baghdad, Iraq</span>
       </div>
     </header>
 
-    <main id="main" class="cv" role="main">
-      <div class="grid" id="layout-grid">
-        
-        <aside class="sidebar">
-          <section class="card profile" id="contact" aria-labelledby="contact-title">
-            <h3 id="contact-title">Contact Information</h3>
+    <section id="summary">
+      <h2>Professional Summary</h2>
+      <p class="summary-text">
+        Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the <strong>Spring ecosystem</strong>. Expert in building cloud-native microservices (WebFlux, Kotlin) and event-driven architectures (Kafka/RabbitMQ). 
+      </p>
+      <p style="color: var(--dim); font-size: 15px;">
+        Proven track record in deploying fault-tolerant FinTech systems on AWS. Specialized in JVM optimization, OAuth2/OIDC, distributed systems, and low-level performance tuning (C/C++).
+      </p>
+      <div class="mono" style="margin-top: 20px; font-size: 12px; color: var(--highlight);">
+        &gt; Early start in BASIC at age 13; focused on OS internals and logic.
+      </div>
+    </section>
 
-            <div class="contact-list">
-              <a href="https://wa.me/9647711455264" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i><span class="label">+964 771 145 5264</span>
-              </a>
-
-              <a href="mailto:ahmed.mohammed.ali9999@gmail.com">
-                <i class="fa-regular fa-envelope"></i><span class="label">ahmed.mohammed.ali9999@gmail.com</span>
-              </a>
-
-              <a href="https://linkedin.com/in/deadboyccc" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i><span class="label">linkedin.com/in/deadboyccc</span>
-              </a>
-
-              <a href="https://github.com/deadboyccc" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i><span class="label">github.com/deadboyccc</span>
-              </a>
-
-              <div style="margin-top:12px; font-size: 13px;">
-                <span class="muted"><i class="fa-solid fa-location-dot" style="margin-right:6px"></i> Baghdad, Iraq</span>
-                <div style="margin-top:8px"><span class="kbd">Open to remote & relocation</span></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="card">
-            <h3>Top Skills</h3>
-            <div class="skills">
-              <div class="skill-pill">Java / Kotlin</div>
-              <div class="skill-pill">Spring Boot</div>
-              <div class="skill-pill">AWS (EKS)</div>
-              <div class="skill-pill">Kafka / RabbitMQ</div>
-              <div class="skill-pill">PostgreSQL</div>
-              <div class="skill-pill">Docker/K8s</div>
-              <div class="skill-pill">Microservices</div>
-              <div class="skill-pill">OpenTelemetry</div>
-            </div>
-          </section>
-
-          <section class="card">
-             <h3>Certifications</h3>
-             <ul class="bullets" style="font-size:13px; padding-left:14px">
-               <li>MuleSoft Anypoint (DEX401)</li>
-               <li>CS50x, CS50P, CS50W (Harvard)</li>
-               <li>AWS Certified Solutions Architect (Study)</li>
-             </ul>
-          </section>
-        </aside>
-
-        <div class="content-section">
-
-          <section class="card" id="summary">
-            <h3>Professional Summary</h3>
-            <p>
-              Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the
-              modern <strong>Spring ecosystem</strong>. Experienced in building <strong>cloud-native microservices</strong>
-              using Spring Boot (WebFlux), Kotlin, and Event-Driven Architectures (Kafka/RabbitMQ). Proficient in
-              deploying <strong>fault-tolerant FinTech and enterprise systems</strong> on AWS (EKS, Lambda, API Gateway) with robust CI/CD automation.
-            </p>
-            <p style="margin-top:10px">
-                AWS Certified Solutions Architect & Developer with expertise in JVM optimization, OAuth2/OIDC (Keycloak), distributed systems, low-level performance tuning (C/C++), and production-grade observability.
-            </p>
-            <div class="tags">
-              <span class="tag">Java</span>
-              <span class="tag">Spring Boot</span>
-              <span class="tag">Kotlin</span>
-              <span class="tag">AWS</span>
-              <span class="tag">FinTech</span>
-              <span class="tag">Distributed Systems</span>
-            </div>
-          </section>
-
-          <section class="card" id="experience">
-            <h3>Experience</h3>
-
-            <article class="experience-item">
-              <div class="meta">
-                <div class="role">QiCard — Integration Engineer</div>
-                <div class="muted">Mar 2025 – Present | Baghdad, Iraq</div>
-              </div>
-              <ul class="bullets">
-                <li>Completed MuleSoft Anypoint Platform (DEX401) and implemented API-led connectivity (RAML).</li>
-                <li>Designed System, Process, and Experience APIs ensuring modularity and reusability.</li>
-                <li>Built middleware for payment gateways/merchant services, reducing integration errors by 30%.</li>
-                <li>Optimized JVM and microservices performance with Dynatrace, reducing response time by ~25%.</li>
-                <li>Managed CI/CD pipelines (Maven, Bitbucket, Jenkins) and collaborated with cross-regional teams.</li>
-              </ul>
-            </article>
-
-            <article class="experience-item">
-              <div class="meta">
-                <div class="role">FFC — Backend Developer</div>
-                <div class="muted">Feb 2025 – Mar 2025 | Baghdad (Hybrid)</div>
-              </div>
-              <ul class="bullets">
-                <li>Integrated core financial business logic into a real-time mobile FinTech app (sub-second latency).</li>
-                <li>Transitioned ERP PoC to production-grade API architecture, reducing manual processes by 40%.</li>
-                <li>Architected decoupled backend with audit logging and RBAC for compliance.</li>
-                <li>Applied Redis caching, tuned PostgreSQL queries, and used circuit-breakers for high availability.</li>
-              </ul>
-            </article>
-
-            <article class="experience-item">
-              <div class="meta">
-                <div class="role">CodeCraft — Backend Developer</div>
-                <div class="muted">Jun 2024 – Mar 2025 | Remote</div>
-              </div>
-              <ul class="bullets">
-                <li>Built REST/GraphQL/SOAP APIs (Node.js, TS) serving 10k+ active users with 99.9% uptime.</li>
-                <li>Implemented JWT-based auth and RBAC; optimized MongoDB/PostgreSQL queries by 35%.</li>
-                <li>Containerized services (Docker) deployed to AWS (EKS) with Kubernetes HPA.</li>
-                <li>Configured CI/CD with GitHub Actions and Jenkins, cutting deployment time by 50%.</li>
-                <li>Leveraged low-level networking knowledge (C++) to optimize request handling.</li>
-              </ul>
-            </article>
-
-            <article class="experience-item">
-              <div class="meta">
-                <div class="role">United Horizon — IT Support Specialist</div>
-                <div class="muted">Jan 2022 – Feb 2023 | Baghdad</div>
-              </div>
-              <ul class="bullets">
-                <li>Provided Tier 1 & 2 support, resolving 200+ tickets/month and improving uptime to 99.8%.</li>
-                <li>Managed Windows/Linux servers and created an IT asset inventory system.</li>
-                <li>Trained end users on security policies, decreasing recurring incidents by 40%.</li>
-              </ul>
-            </article>
-          </section>
-
-          <section class="card" id="projects">
-            <h3>Projects & Highlights</h3>
-            <div style="display:grid; gap:16px;">
-              <div>
-                <strong style="color:var(--text)">FinTech & ERP Integration</strong>
-                <p class="muted" style="margin-top:4px; font-size:13px">Secure, scalable backends with async messaging (RabbitMQ, AWS SQS/SNS); processing 1k+ tx/min with encryption and audit trails.</p>
-              </div>
-              <div>
-                <strong style="color:var(--text)">Cloud-native Microservices Arch</strong>
-                <p class="muted" style="margin-top:4px; font-size:13px">Node.js + Spring Boot microservices, AWS EKS orchestration, PostgreSQL/Aurora persistence.</p>
-              </div>
-              <div>
-                <strong style="color:var(--text)">Technical Blogging & Open Source</strong>
-                <p class="muted" style="margin-top:4px; font-size:13px">Medium series on migrating monoliths to K8s. Maintainer of microservices templates and integration libraries.</p>
-              </div>
-            </div>
-          </section>
-
-          <section class="card" id="education">
-            <h3>Education</h3>
-            <div style="margin-bottom:12px">
-                <div style="font-weight:600; font-size:15px">American University of Iraq, Sulaimani (AUIS)</div>
-                <div class="muted">Full-ride merit scholarship (voluntarily left for self-paced backend learning)</div>
-            </div>
-            <div>
-                <div style="font-weight:600; font-size:15px">Baghdad College High School</div>
-                <div class="muted">High School Diploma, GPA: 98/100</div>
-            </div>
-          </section>
-          
-           <section class="card" id="interests">
-            <h3>Interests & Advocacy</h3>
-            <p>
-                Rigorous engineering practices (TDD, clean code), low-level programming, and competitive programming.
-                Advocate for open education, mental health, sustainability, and animal welfare. Enjoy hiking, meditation, esports, and quiet nature.
-            </p>
-          </section>
-
-        </div>
+    <section id="skills">
+      <h2>Technical Arsenal</h2>
+      
+      <div class="skills-category">
+        <div class="skills-label">Languages</div>
+        <div class="skills-list">Java, Kotlin (Coroutines, WebFlux), C/C++, C#, Python, Node.js, TypeScript, JavaScript</div>
       </div>
 
-      <footer>
-        <p>Ready for new opportunities — References available upon request.</p>
-        <p class="muted">Last updated: Dec 31, 2025</p>
-      </footer>
-    </main>
+      <div class="skills-category">
+        <div class="skills-label">Backend & Frameworks</div>
+        <div class="skills-list">Spring Boot, Spring Cloud, JPA/Hibernate, Jakarta EE, NestJS, Express.js, ASP.NET Core, MuleSoft Anypoint, Spring AI</div>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-label">Cloud & DevOps</div>
+        <div class="skills-list">AWS (EKS, Lambda, S3, RDS/Aurora, API Gateway), GCP, Docker, Kubernetes (Helm), CI/CD (GitHub Actions, Jenkins, Bitbucket)</div>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-label">Infrastructure</div>
+        <div class="skills-list">PostgreSQL (Replication, Partitioning), DynamoDB, MongoDB, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, GraphQL</div>
+      </div>
+
+      <div class="skills-category">
+        <div class="skills-label">Observability</div>
+        <div class="skills-list">OpenTelemetry, Prometheus, Grafana, Dynatrace, ELK Stack, AWS X-Ray, Anypoint Monitoring</div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">QiCard — Integration Engineer</div>
+          <div class="exp-meta">Mar 2025 — Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Leveraged MuleSoft Anypoint and API-led connectivity to orchestrate enterprise integrations.</li>
+          <li>Implemented System, Process, and Experience APIs using RAML, reducing integration errors by 30%.</li>
+          <li>Developed middleware for payment gateways and merchant services using DataWeave and Java.</li>
+          <li>Optimized microservices via Dynatrace APM, reducing average response time by 25%.</li>
+          <li>Managed automated deployments using Maven, Bitbucket, and Jenkins in an Agile framework.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">FFC — Backend Developer</div>
+          <div class="exp-meta">Feb 2025 — Mar 2025</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Integrated core financial logic into real-time mobile FinTech apps with sub-second latency.</li>
+          <li>Transitioned ERP PoC to production-grade API architecture, reducing manual processes by 40%.</li>
+          <li>Architected decoupled backends with robust audit logging, exception traceability, and RBAC.</li>
+          <li>Optimized PostgreSQL and Redis caching; implemented circuit-breaker patterns for high availability.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">CodeCraft — Backend Developer</div>
+          <div class="exp-meta">Jun 2024 — Mar 2025</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Maintained REST, GraphQL, and SOAP APIs (Node.js/TS) serving 10k+ active users.</li>
+          <li>Optimized database strategies (indexing, connection pooling), improving query times by 35%.</li>
+          <li>Deployed microservices to AWS EKS with Kubernetes horizontal pod autoscaling.</li>
+          <li>Achieved 95% code coverage with Jest/Postman; reduced unauthorized access incidents to near zero.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">United Horizon — IT Support Specialist</div>
+          <div class="exp-meta">Jan 2022 — Feb 2023</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Resolved 200+ monthly tickets for hardware/networking, maintaining 99.8% system uptime.</li>
+          <li>Managed Windows and Linux server environments for critical internal services.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Technical Highlights</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h4>FinTech & ERP Integration</h4>
+          <p>Processing 1k+ transactions/min with asynchronous messaging (RabbitMQ/SQS) and full audit trails.</p>
+        </div>
+        <div class="project-card">
+          <h4>Microservices Reference Architecture</h4>
+          <p>Full-stack AWS EKS orchestration using Spring Boot, Aurora, and OpenTelemetry.</p>
+        </div>
+        <div class="project-card">
+          <h4>Open Source & Tooling</h4>
+          <p>Maintains GitHub repositories for Node.js performance utilities and microservices templates.</p>
+        </div>
+        <div class="project-card">
+          <h4>Technical Advocacy</h4>
+          <p>Author of a Medium series on migrating monolithic Java applications to Kubernetes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div>
+          <h2>Education</h2>
+          <div style="margin-bottom: 16px;">
+            <p style="font-weight:600; font-size:14px;">AUIS</p>
+            <p style="font-size:13px; color:var(--dim);">Full-ride Merit Scholarship (Advanced Backend focus)</p>
+          </div>
+          <div>
+            <p style="font-weight:600; font-size:14px;">Baghdad College High School</p>
+            <p style="font-size:13px; color:var(--dim);">Diploma — GPA: 98/100</p>
+          </div>
+        </div>
+        <div>
+          <h2>Continuous Focus</h2>
+          <p class="mono" style="font-size:11px; color:var(--dim);">
+            Spring AI, Resilience4j, SAGA patterns, Testcontainers, Kotlin Coroutines, Serverless, AWS Fargate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="advocacy">
+      <h2>Interests & Advocacy</h2>
+      <p style="font-size:14px; color:var(--dim);">
+        Rigorous engineering (TDD, Clean Code), physics, and systems thinking. Advocate for open education, mental health, and animal welfare. Enjoys hiking, meditation, and text-based async communication.
+      </p>
+    </section>
+
+    <footer>
+      <p>Ahmed Mohammed Ali — 2025</p>
+      <p class="mono" style="margin-top:8px; font-size:11px;">References available upon request.</p>
+    </footer>
   </div>
 
   <script>
-    (function(){
-      const themeBtn = document.getElementById('themeBtn');
-      const saved = localStorage.getItem('pref-theme');
-      // Default to dark theme
-      const initial = saved === 'light' ? 'light' : 'dark';
-      
-      if(initial === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
+    const themeBtn = document.getElementById('themeBtn');
+    const body = document.body;
+    const icon = themeBtn.querySelector('i');
 
-      function updateIcon(isLight){
-        themeBtn.innerHTML = isLight 
-          ? '<i class="fa-regular fa-moon" style="font-size:16px"></i>' 
-          : '<i class="fa-regular fa-sun" style="font-size:16px"></i>';
-        themeBtn.setAttribute('aria-label', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
-      }
-      
-      updateIcon(initial === 'light');
-
-      themeBtn.addEventListener('click', ()=>{
-        const current = document.documentElement.getAttribute('data-theme');
-        const newTheme = current === 'light' ? 'dark' : 'light';
-        
-        if(newTheme === 'light'){
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-        
-        localStorage.setItem('pref-theme', newTheme);
-        updateIcon(newTheme === 'light');
-      });
-    })();
+    themeBtn.addEventListener('click', () => {
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    });
   </script>
 </body>
 </html>

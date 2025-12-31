@@ -66,13 +66,13 @@
     .icon{opacity:0.95}
 
     /* main panel */
-    main.cv{background:linear-gradient(180deg,var(--panel),rgba(0,0,0,0.02));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 40px rgba(0,0,0,0.45);margin-top:18px}
+    main.cv{background:linear-gradient(180deg,var(--panel),rgba(0,0,0,0.02));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 40px rgba(0,0,0,0.45);margin-top:18px;position:relative;overflow:visible}
 
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
 
-    /* left column: content */
-    .content-section{background:transparent;padding:8px}
-    section.card{background:var(--panel);border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.03)}
+    /* Left column: content */
+    .content-section{background:transparent;padding:8px;position:relative;z-index:1}
+    section.card{background:var(--panel);border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.03);position:relative}
     section.card + section.card{margin-top:12px}
 
     h2.snippet-title{font-size:13px;color:var(--muted);margin-bottom:8px}
@@ -86,11 +86,14 @@
     .tag:hover{transform:translateY(-3px)}
 
     /* right column: sidebar */
-    aside.sidebar{position:relative}
+    aside.sidebar{position:relative;z-index:3}
     .card.profile{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
     .contact-list{display:flex;flex-direction:column;gap:8px}
-    .contact-list a{display:inline-flex;gap:10px;align-items:center;padding:8px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .contact-list a{display:inline-flex;gap:10px;align-items:center;padding:8px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.02);text-decoration:none}
     .contact-list a .label{font-weight:600}
+
+    /* ensure sidebar sections visually sit above main content on small screens when stacking */
+    .sidebar section.card{position:relative;z-index:4}
 
     /* experience list */
     .experience-item{padding:12px;border-radius:10px;background:var(--panel);border:1px solid rgba(255,255,255,0.02);margin-bottom:10px}
@@ -117,7 +120,18 @@
        Responsive
        ========================== */
     @media (max-width:1000px){.grid{grid-template-columns:1fr 320px}}
-    @media (max-width:880px){.grid{grid-template-columns:1fr}.sidebar{order:2}.content-section{order:1}}
+
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr}
+      .sidebar{order:2}
+      .content-section{order:1}
+      /* stack header elements to avoid overflow and keep quick-links usable */
+      .bar{flex-direction:column;align-items:flex-start;gap:10px}
+      .quick-links{align-self:stretch;display:flex;gap:8px;flex-wrap:wrap}
+      .quick-links .btn{flex:1 1 auto}
+      /* Give sidebar cards a subtle elevated look so they don't feel hidden */
+      .sidebar section.card{box-shadow:0 12px 30px rgba(0,0,0,0.45)}
+    }
 
     @media (max-width:520px){
       .wrap{padding:12px;margin:12px}
@@ -125,6 +139,13 @@
       .grid{grid-template-columns:1fr}
       .contact-list a{font-size:13px}
       .skills{grid-template-columns:repeat(1,1fr)}
+
+      /* make contact links full width and clearly visible */
+      .contact-list a{width:100%;display:flex}
+
+      /* ensure quick links are touch-friendly and full width */
+      .quick-links{width:100%}
+      .quick-links .btn{width:100%;text-align:center}
     }
 
     /* print */
@@ -413,4 +434,4 @@
       });
     })();
   </script></body>
-          </html>
+</html>

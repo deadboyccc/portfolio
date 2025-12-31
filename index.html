@@ -18,21 +18,21 @@
     :root{
       /* Core Colors */
       --bg: #0d1117;
-      --panel: #161b22; /* Slightly distinct from bg for depth */
+      --panel: #161b22;
       --muted: #8b949e;
       --text: #c9d1d9;
-      --accent: #2ea043; /* Github Green */
+      --accent: #2ea043; /* GitHub Green */
       
       /* Dynamic Visuals */
       --glass: rgba(255,255,255,0.03);
       --border-color: rgba(240,246,252,0.1); /* FIX: Variable border color */
       --shadow-color: rgba(0,0,0,0.5);       /* FIX: Variable shadow opacity */
-      --header-bg: rgba(13, 17, 23, 0.75);   /* FIX: Background for sticky header */
+      --header-bg: rgba(13, 17, 23, 0.85);   /* FIX: Background for sticky header */
 
       /* Layout */
       --radius: 12px;
       --max-width: 1100px;
-      --container-pad: 20px;
+      --container-pad: 24px;
       --focus: 3px solid rgba(46,160,67,0.4);
     }
 
@@ -47,8 +47,8 @@
       /* FIX: Inverted visual effects for visibility on white */
       --glass: rgba(0,0,0,0.04);
       --border-color: rgba(27,31,36,0.15); 
-      --shadow-color: rgba(140,149,159,0.2); /* Softer shadow */
-      --header-bg: rgba(255, 255, 255, 0.85);
+      --shadow-color: rgba(140,149,159,0.2);
+      --header-bg: rgba(255, 255, 255, 0.9);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -59,10 +59,10 @@
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       min-height:100vh;
-      transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    a{color:inherit; text-decoration: none;} /* Added text-decoration none base */
+    a{color:inherit; text-decoration: none;}
     img{max-width:100%;height:auto}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -76,27 +76,28 @@
       position:sticky;
       top:0;
       z-index:60;
-      background: var(--header-bg); /* FIX: Added tint so text doesn't clash on scroll */
+      background: var(--header-bg);
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
-      padding:12px 0;
-      border-bottom: 1px solid var(--border-color); /* FIX: visual separation */
+      padding:16px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
     }
     .bar{display:flex;align-items:center;gap:12px;justify-content:space-between}
 
-    .title-row{display:flex;gap:12px;align-items:center}
+    .title-row{display:flex;gap:16px;align-items:center}
     
     .terminal-style{
       background:var(--panel);
-      padding:8px 12px;
+      padding:10px 14px;
       border-radius:10px;
-      border:1px solid var(--border-color); /* FIX: Uses variable */
+      border:1px solid var(--border-color);
       box-shadow:0 4px 12px var(--shadow-color);
       flex-shrink: 0;
     }
     
     .name{font-size:20px;font-weight:700;color:var(--accent); line-height: 1.2;}
-    .subtitle{font-size:13px;color:var(--muted); margin-top: 2px;}
+    .subtitle{font-size:13px;color:var(--muted); margin-top: 4px;}
 
     /* Utility Links */
     .quick-links{display:flex;gap:10px;align-items:center}
@@ -117,14 +118,7 @@
       color: var(--accent);
     }
 
-    /* Main Panel */
-    main.cv{
-      /* Removed heavy container styling for cleaner resume look, 
-         using grid directly implies the structure */
-      margin-top:24px;
-      position:relative;
-    }
-
+    /* Main Grid */
     .grid{
       display:grid;
       grid-template-columns:1fr 340px;
@@ -136,49 +130,46 @@
     section.card{
       background:var(--panel);
       border-radius:12px;
-      padding:20px;
-      border:1px solid var(--border-color); /* FIX: Visible in light mode */
+      padding:24px;
+      border:1px solid var(--border-color);
       position:relative;
-      box-shadow: 0 4px 6px var(--shadow-color); /* FIX: Softer shadow */
+      box-shadow: 0 4px 6px var(--shadow-color);
     }
-    section.card + section.card{margin-top:16px}
+    section.card + section.card{margin-top:20px}
 
-    h2.snippet-title{font-size:12px; text-transform: uppercase; letter-spacing: 0.5px; color:var(--muted); margin-bottom:12px; opacity: 0.8;}
-    h3{color:var(--accent);font-size:16px;margin-bottom:10px}
-    p,li{color:var(--text);font-size:14px;line-height:1.6}
-    ul.bullets{padding-left: 18px;} 
+    h3{color:var(--accent);font-size:16px;margin-bottom:12px; text-transform: uppercase; letter-spacing: 0.5px;}
+    p,li{color:var(--text);font-size:14px;line-height:1.7}
+    ul.bullets{padding-left: 18px; margin-top: 8px;} 
+    ul.bullets li { margin-bottom: 6px; }
     
     /* Tags */
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
     .tag{
       background:var(--glass);
       border:1px solid var(--border-color);
       color: var(--text);
       padding:4px 10px;
-      border-radius:999px;
+      border-radius:4px;
       font-size:12px;
       font-weight: 500;
-      transition: transform 0.1s;
     }
-    .tag:hover{transform:translateY(-2px); border-color: var(--accent);}
 
     /* Sidebar */
-    aside.sidebar{position:sticky; top: 90px; z-index:3;} /* FIX: Make sidebar sticky on desktop for easy access */
+    aside.sidebar{position:sticky; top: 100px; z-index:3;} 
     
-    .contact-list{display:flex;flex-direction:column;gap:10px}
+    .contact-list{display:flex;flex-direction:column;gap:12px}
     .contact-list a{
       display:flex;
       gap:12px;
       align-items:center;
-      padding:10px;
+      padding:12px;
       border-radius:8px;
       background:var(--glass);
       border:1px solid var(--border-color);
       transition: all 0.2s;
       
       /* FIX: Long emails breaking mobile layout */
-      word-break: break-word; 
-      overflow-wrap: anywhere; 
+      word-break: break-all; 
     }
     .contact-list a:hover{background:var(--panel); border-color: var(--accent);}
     .contact-list a .label{font-size: 13px;}
@@ -187,14 +178,16 @@
     /* Experience */
     .experience-item{
       padding:16px;
-      border-radius:10px;
-      background:var(--glass); /* Subtle diff from card bg */
+      border-radius:8px;
+      background:var(--glass); 
       border:1px solid var(--border-color);
-      margin-bottom:12px;
+      margin-bottom:16px;
     }
-    .meta{display:flex;gap:12px;flex-wrap:wrap; justify-content: space-between; margin-bottom: 8px;}
-    .meta .role{font-weight:700; color: var(--text);}
-    .meta .muted{font-size: 13px;}
+    .experience-item:last-child { margin-bottom: 0; }
+    
+    .meta{display:flex;gap:12px;flex-wrap:wrap; justify-content: space-between; margin-bottom: 8px; align-items: baseline;}
+    .meta .role{font-weight:700; color: var(--text); font-size: 15px;}
+    .meta .muted{font-size: 12px; font-family: sans-serif; opacity: 0.8;}
 
     /* Skills Grid */
     .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
@@ -208,7 +201,7 @@
     }
 
     /* Footer */
-    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px; padding-bottom: 20px;}
+    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px; padding-bottom: 40px;}
     .kbd{background:var(--glass); border: 1px solid var(--border-color); padding:4px 7px;border-radius:6px; font-size: 11px;}
 
     /* ==========================
@@ -216,9 +209,9 @@
        ========================== */
     @media (max-width:900px){
       .grid{grid-template-columns:1fr}
-      aside.sidebar{position:static;} /* Unstick on mobile/tablet */
+      aside.sidebar{position:static;} 
       
-      /* Reorder: Put contact info near top on mobile so it's easy to find */
+      /* Reorder: Sidebar (Contact) moves to top on mobile */
       .grid { display: flex; flex-direction: column; }
       .content-section { order: 2; }
       .sidebar { order: 1; width: 100%; }
@@ -227,16 +220,15 @@
       .quick-links{width:100%; justify-content: space-between;}
       .quick-links .btn{flex:1; text-align:center}
       
-      header.app-header { position: relative; } /* FIX: Unstick header on mobile to save screen space */
+      header.app-header { position: relative; } 
     }
 
     @media (max-width:500px){
       .wrap{padding: 12px 16px;}
       .name{font-size:18px}
-      .skills{grid-template-columns:repeat(2,1fr)} /* Keep 2 cols looks better */
+      .skills{grid-template-columns:repeat(2,1fr)} 
     }
 
-    /* Accessibility Focus */
     a:focus,button:focus{outline:none;box-shadow: 0 0 0 3px var(--accent);}
   </style>
 </head>
@@ -272,7 +264,6 @@
         
         <aside class="sidebar">
           <section class="card profile" id="contact" aria-labelledby="contact-title">
-            <h2 class="snippet-title">Snippet — Contact</h2>
             <h3 id="contact-title">Contact Information</h3>
 
             <div class="contact-list">
@@ -294,127 +285,158 @@
 
               <div style="margin-top:12px; font-size: 13px;">
                 <span class="muted"><i class="fa-solid fa-location-dot" style="margin-right:6px"></i> Baghdad, Iraq</span>
-                <div style="margin-top:6px"><span class="kbd">Open to remote & relocation</span></div>
+                <div style="margin-top:8px"><span class="kbd">Open to remote & relocation</span></div>
               </div>
             </div>
           </section>
 
           <section class="card">
-            <h2 class="snippet-title">Snippet — Top Skills</h2>
+            <h3>Top Skills</h3>
             <div class="skills">
-              <div class="skill-pill">Java</div>
+              <div class="skill-pill">Java / Kotlin</div>
               <div class="skill-pill">Spring Boot</div>
-              <div class="skill-pill">Kotlin</div>
               <div class="skill-pill">AWS (EKS)</div>
-              <div class="skill-pill">Kafka</div>
+              <div class="skill-pill">Kafka / RabbitMQ</div>
               <div class="skill-pill">PostgreSQL</div>
               <div class="skill-pill">Docker/K8s</div>
+              <div class="skill-pill">Microservices</div>
               <div class="skill-pill">OpenTelemetry</div>
             </div>
+          </section>
+
+          <section class="card">
+             <h3>Certifications</h3>
+             <ul class="bullets" style="font-size:13px; padding-left:14px">
+               <li>MuleSoft Anypoint (DEX401)</li>
+               <li>CS50x, CS50P, CS50W (Harvard)</li>
+               <li>AWS Certified Solutions Architect (Study)</li>
+             </ul>
           </section>
         </aside>
 
         <div class="content-section">
 
           <section class="card" id="summary">
-            <h2 class="snippet-title">Snippet — Professional Summary</h2>
             <h3>Professional Summary</h3>
             <p>
               Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the
               modern <strong>Spring ecosystem</strong>. Experienced in building <strong>cloud-native microservices</strong>
-              using Spring Boot (WebFlux), Kotlin, and Event-Driven Architectures. Proficient in
-              deploying fault-tolerant FinTech and enterprise systems on AWS with robust CI/CD automation.
+              using Spring Boot (WebFlux), Kotlin, and Event-Driven Architectures (Kafka/RabbitMQ). Proficient in
+              deploying <strong>fault-tolerant FinTech and enterprise systems</strong> on AWS (EKS, Lambda, API Gateway) with robust CI/CD automation.
             </p>
-            <div class="tags" aria-hidden="false">
+            <p style="margin-top:10px">
+                AWS Certified Solutions Architect & Developer with expertise in JVM optimization, OAuth2/OIDC (Keycloak), distributed systems, low-level performance tuning (C/C++), and production-grade observability.
+            </p>
+            <div class="tags">
               <span class="tag">Java</span>
               <span class="tag">Spring Boot</span>
               <span class="tag">Kotlin</span>
               <span class="tag">AWS</span>
-              <span class="tag">Microservices</span>
+              <span class="tag">FinTech</span>
+              <span class="tag">Distributed Systems</span>
             </div>
           </section>
 
           <section class="card" id="experience">
-            <h2 class="snippet-title">Snippet — Experience</h2>
             <h3>Experience</h3>
 
             <article class="experience-item">
               <div class="meta">
                 <div class="role">QiCard — Integration Engineer</div>
-                <div class="muted">Mar 2025 – Present</div>
+                <div class="muted">Mar 2025 – Present | Baghdad, Iraq</div>
               </div>
               <ul class="bullets">
-                <li>Completed MuleSoft Anypoint Platform (DEX401) and implemented API-led connectivity using RAML.</li>
-                <li>Designed System, Process, and Experience APIs to improve reusability and governance.</li>
-                <li>Built middleware for payment gateways, reducing integration errors by 30%.</li>
-                <li>Optimized JVM/Microservices performance with Dynatrace, reducing response time by ~25%.</li>
+                <li>Completed MuleSoft Anypoint Platform (DEX401) and implemented API-led connectivity (RAML).</li>
+                <li>Designed System, Process, and Experience APIs ensuring modularity and reusability.</li>
+                <li>Built middleware for payment gateways/merchant services, reducing integration errors by 30%.</li>
+                <li>Optimized JVM and microservices performance with Dynatrace, reducing response time by ~25%.</li>
+                <li>Managed CI/CD pipelines (Maven, Bitbucket, Jenkins) and collaborated with cross-regional teams.</li>
               </ul>
             </article>
 
             <article class="experience-item">
               <div class="meta">
                 <div class="role">FFC — Backend Developer</div>
-                <div class="muted">Feb 2025 – Mar 2025</div>
+                <div class="muted">Feb 2025 – Mar 2025 | Baghdad (Hybrid)</div>
               </div>
               <ul class="bullets">
-                <li>Integrated core financial business logic into a real-time mobile FinTech app.</li>
+                <li>Integrated core financial business logic into a real-time mobile FinTech app (sub-second latency).</li>
                 <li>Transitioned ERP PoC to production-grade API architecture, reducing manual processes by 40%.</li>
-                <li>Applied Redis caching and Circuit Breaker patterns for high availability.</li>
+                <li>Architected decoupled backend with audit logging and RBAC for compliance.</li>
+                <li>Applied Redis caching, tuned PostgreSQL queries, and used circuit-breakers for high availability.</li>
               </ul>
             </article>
 
             <article class="experience-item">
               <div class="meta">
                 <div class="role">CodeCraft — Backend Developer</div>
-                <div class="muted">Jun 2024 – Mar 2025</div>
+                <div class="muted">Jun 2024 – Mar 2025 | Remote</div>
               </div>
               <ul class="bullets">
-                <li>Built REST/GraphQL APIs (Node.js, TS) serving 10k+ active users with 99.9% uptime.</li>
-                <li>Containerized services (Docker) and deployed to AWS (EKS) with Kubernetes HPA.</li>
+                <li>Built REST/GraphQL/SOAP APIs (Node.js, TS) serving 10k+ active users with 99.9% uptime.</li>
+                <li>Implemented JWT-based auth and RBAC; optimized MongoDB/PostgreSQL queries by 35%.</li>
+                <li>Containerized services (Docker) deployed to AWS (EKS) with Kubernetes HPA.</li>
                 <li>Configured CI/CD with GitHub Actions and Jenkins, cutting deployment time by 50%.</li>
+                <li>Leveraged low-level networking knowledge (C++) to optimize request handling.</li>
               </ul>
             </article>
 
             <article class="experience-item">
               <div class="meta">
-                <div class="role">United Horizon — IT Support</div>
-                <div class="muted">Jan 2022 – Feb 2023</div>
+                <div class="role">United Horizon — IT Support Specialist</div>
+                <div class="muted">Jan 2022 – Feb 2023 | Baghdad</div>
               </div>
               <ul class="bullets">
-                <li>Resolved 200+ tickets/month, managing Windows/Linux servers and asset inventory.</li>
+                <li>Provided Tier 1 & 2 support, resolving 200+ tickets/month and improving uptime to 99.8%.</li>
+                <li>Managed Windows/Linux servers and created an IT asset inventory system.</li>
+                <li>Trained end users on security policies, decreasing recurring incidents by 40%.</li>
               </ul>
             </article>
           </section>
 
           <section class="card" id="projects">
-            <h2 class="snippet-title">Snippet — Projects</h2>
-            <h3>Technical Highlights</h3>
+            <h3>Projects & Highlights</h3>
             <div style="display:grid; gap:16px;">
               <div>
-                <strong>FinTech & ERP Integration</strong>
-                <p class="muted" style="margin-top:4px">Secure, scalable backends with async messaging (RabbitMQ, SQS); processing 1k+ tx/min.</p>
+                <strong style="color:var(--text)">FinTech & ERP Integration</strong>
+                <p class="muted" style="margin-top:4px; font-size:13px">Secure, scalable backends with async messaging (RabbitMQ, AWS SQS/SNS); processing 1k+ tx/min with encryption and audit trails.</p>
               </div>
               <div>
-                <strong>Microservices Reference Architecture</strong>
-                <p class="muted" style="margin-top:4px">Node.js + Spring Boot microservices, AWS EKS orchestration, Aurora persistence.</p>
+                <strong style="color:var(--text)">Cloud-native Microservices Arch</strong>
+                <p class="muted" style="margin-top:4px; font-size:13px">Node.js + Spring Boot microservices, AWS EKS orchestration, PostgreSQL/Aurora persistence.</p>
+              </div>
+              <div>
+                <strong style="color:var(--text)">Technical Blogging & Open Source</strong>
+                <p class="muted" style="margin-top:4px; font-size:13px">Medium series on migrating monoliths to K8s. Maintainer of microservices templates and integration libraries.</p>
               </div>
             </div>
           </section>
 
           <section class="card" id="education">
-            <h2 class="snippet-title">Snippet — Education</h2>
-            <h3>Education & Certs</h3>
-            <ul class="bullets">
-              <li><strong>AUIS:</strong> Full-ride merit scholarship (Computer Science focus).</li>
-              <li><strong>Certifications:</strong> CS50 (Harvard), MuleSoft (DEX401), AWS Solutions Architect (Study).</li>
-            </ul>
+            <h3>Education</h3>
+            <div style="margin-bottom:12px">
+                <div style="font-weight:600; font-size:15px">American University of Iraq, Sulaimani (AUIS)</div>
+                <div class="muted">Full-ride merit scholarship (voluntarily left for self-paced backend learning)</div>
+            </div>
+            <div>
+                <div style="font-weight:600; font-size:15px">Baghdad College High School</div>
+                <div class="muted">High School Diploma, GPA: 98/100</div>
+            </div>
+          </section>
+          
+           <section class="card" id="interests">
+            <h3>Interests & Advocacy</h3>
+            <p>
+                Rigorous engineering practices (TDD, clean code), low-level programming, and competitive programming.
+                Advocate for open education, mental health, sustainability, and animal welfare. Enjoy hiking, meditation, esports, and quiet nature.
+            </p>
           </section>
 
         </div>
       </div>
 
       <footer>
-        <p>References available upon request.</p>
+        <p>Ready for new opportunities — References available upon request.</p>
         <p class="muted">Last updated: Dec 31, 2025</p>
       </footer>
     </main>
@@ -423,10 +445,8 @@
   <script>
     (function(){
       const themeBtn = document.getElementById('themeBtn');
-      
-      // Default to dark unless user previously selected light
-      // Resume devs usually look cooler in dark mode :)
       const saved = localStorage.getItem('pref-theme');
+      // Default to dark theme
       const initial = saved === 'light' ? 'light' : 'dark';
       
       if(initial === 'light') {

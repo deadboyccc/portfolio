@@ -1,364 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-
 <head>
-  <style>
-    /* Screen reader only utility class */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmed Mohammed Ali - Backend Developer</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ahmed Mohammed Ali — Senior Backend Engineer</title>  <!-- Fonts & Icons (kept external so icons & font render correctly) -->  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="script.js" defer></script>
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  <meta name="description" content="Ahmed Mohammed Ali — Senior Backend Engineer (Java, Spring, Cloud-native microservices, FinTech)">  <style>
+    /* ==========================
+       Reset & Base
+       ========================== */
+    :root{
+      --bg: #0d1117;
+      --panel:#0f1720;
+      --muted:#9aa4b2;
+      --text:#e6edf3;
+      --accent:#2ea043;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --max-width:1100px;
+      --container-pad:20px;
+      --header-h:56px;
+      --nav-h:48px;
+      --focus: 3px solid rgba(46,160,67,0.18);
+    }
 
+    /* Light theme variables (toggled via [data-theme="light"]) */
+    [data-theme="light"]{
+      --bg:#ffffff;
+      --panel:#f6f8fa;
+      --muted:#57606a;
+      --text:#111827;
+      --accent:#0969da;
+      --glass: rgba(0,0,0,0.02);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+    a{color:inherit}
+    img{max-width:100%;height:auto}
+
+    /* Visually hidden (screen readers) */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* ==========================
+       Layout
+       ========================== */
+    .wrap{max-width:var(--max-width);margin:24px auto;padding:var(--container-pad);}
+
+    /* header + controls */
+    header.app-header{position:sticky;top:0;z-index:60;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:10px 0}
+    .bar{display:flex;align-items:center;gap:12px;justify-content:space-between}
+
+    .title-row{display:flex;gap:12px;align-items:center}
+    .terminal-style{background:var(--panel);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+    .name{font-size:20px;font-weight:700;color:var(--accent)}
+    .subtitle{font-size:13px;color:var(--muted)}
+
+    /* utility links */
+    .quick-links{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
+    .icon{opacity:0.95}
+
+    /* main panel */
+    main.cv{background:linear-gradient(180deg,var(--panel),rgba(0,0,0,0.02));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 40px rgba(0,0,0,0.45);margin-top:18px}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+
+    /* left column: content */
+    .content-section{background:transparent;padding:8px}
+    section.card{background:var(--panel);border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.03)}
+    section.card + section.card{margin-top:12px}
+
+    h2.snippet-title{font-size:13px;color:var(--muted);margin-bottom:8px}
+    h3{color:var(--accent);font-size:16px;margin-bottom:8px}
+    p,li{color:var(--text);font-size:14px;line-height:1.6}
+    small{color:var(--muted)}
+
+    /* tags/snippets */
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-size:12px}
+    .tag:hover{transform:translateY(-3px)}
+
+    /* right column: sidebar */
+    aside.sidebar{position:relative}
+    .card.profile{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .contact-list a{display:inline-flex;gap:10px;align-items:center;padding:8px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .contact-list a .label{font-weight:600}
+
+    /* experience list */
+    .experience-item{padding:12px;border-radius:10px;background:var(--panel);border:1px solid rgba(255,255,255,0.02);margin-bottom:10px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap}
+    .meta .role{font-weight:700}
+    .bullets{margin-top:10px}
+    .bullets li{margin-bottom:8px}
+
+    /* skills grid */
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .skill-pill{padding:8px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+
+    /* projects */
+    .projects-grid{display:grid;gap:10px}
+
+    /* footer */
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .kbd{background:rgba(0,0,0,0.12);padding:4px 7px;border-radius:6px}
+
+    /* ==========================
+       Responsive
+       ========================== */
+    @media (max-width:1000px){.grid{grid-template-columns:1fr 320px}}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}.sidebar{order:2}.content-section{order:1}}
+
+    @media (max-width:520px){
+      .wrap{padding:12px;margin:12px}
+      .name{font-size:18px}
+      .grid{grid-template-columns:1fr}
+      .contact-list a{font-size:13px}
+      .skills{grid-template-columns:repeat(1,1fr)}
+    }
+
+    /* print */
+    @media print{body{background:#fff;color:#000} .wrap{box-shadow:none} .icon{display:none} a:after{content:" (" attr(href) ")"}}
+
+    /* accessibility focus */
+    a:focus,button:focus{outline:none;box-shadow:var(--focus)}
+  </style></head>
 <body>
-  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" aria-label="Toggle dark/light theme">
-  <label for="theme-toggle" class="theme-toggle-label" aria-hidden="true">
-    <i class="fas fa-sun sun-icon"></i>
-    <i class="fas fa-moon moon-icon"></i>
-  </label>
-
-  <!-- Header Section -->
-  <header class="terminal-header" role="banner">
-    <div class="terminal-controls" aria-hidden="true">
-      <span class="control close" title="Close"></span>
-      <span class="control minimize" title="Minimize"></span>
-      <span class="control maximize" title="Maximize"></span>
+  <a class="sr-only" href="#main">Skip to content</a>  <div class="wrap" id="page-wrap">
+    <header class="app-header">
+      <div class="bar">
+        <div class="title-row">
+          <div class="terminal-style" aria-hidden="true">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff5f56;margin-right:6px"></span>
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffbd2e;margin-right:6px"></span>
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#27ca3f"></span>
+          </div><div style="margin-left:8px">
+        <div class="name">Ahmed Mohammed Ali</div>
+        <div class="subtitle">Senior Backend Engineer — Cloud-native microservices, Spring, FinTech</div>
+      </div>
     </div>
-    <h1 class="terminal-title" aria-label="Portfolio terminal window">ahmed@portfolio:~$</h1>
-  </header>
 
-  <!-- Navigation Bar -->
-  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar">
-    <span class="hamburger"></span>
-  </button>
-  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="#hero" aria-current="page">Home</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-  </nav>
-
-  <div class="terminal-container">
-    <!-- Reserve space for sticky header/navbar to prevent layout shift -->
-    <div style="height: calc(var(--header-height) + var(--navbar-height)); min-height: 90px;"></div>
-    <!-- Main Content -->
-    <main class="terminal-content">
-      <!-- Hero Section -->
-      <section id="hero" class="section" aria-labelledby="hero-title">
-        <div class="command-line" role="presentation">
-          <span class="prompt" aria-hidden="true">$</span>
-          <span class="command" aria-label="Command: whoami">whoami</span>
-        </div>
-        <div class="output" role="region" aria-label="About me">
-          <h2 class="hero-title" id="hero-title">Ahmed Mohammed Ali <span aria-hidden="true">✨</span></h2>
-          <p class="hero-subtitle">Senior Backend Developer <span aria-hidden="true">🚀</span></p>
-          <ul class="hero-tags" aria-label="Key skills">
-            <li class="tag">Cloud-Native Systems</li>
-            <li class="tag">FinTech Integration</li>
-            <li class="tag">Enterprise APIs</li>
-            <li class="tag">Microservices</li>
-            <li class="tag">Node.js</li>
-            <li class="tag">Spring Boot</li>
-            <li class="tag">ASP.NET Core</li>
-            <li class="tag">MuleSoft</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="section" aria-labelledby="contact-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: cat contact.txt">cat contact.txt</span>
-        </div>
-        <div class="output contact-grid" role="list" aria-label="Contact methods">
-          <div class="contact-item" role="listitem">
-            <i class="fas fa-phone" aria-hidden="true" focusable="false"></i>
-            <span><span class="sr-only">Phone:</span> +964 771 145 5264 <span aria-hidden="true">📞</span></span>
-          </div>
-          <div class="contact-item" role="listitem">
-            <i class="fas fa-envelope" aria-hidden="true" focusable="false"></i>
-            <a href="mailto:ahmed.mohammed.ali9999@gmail.com"><span class="sr-only">Email:</span>
-              ahmed.mohammed.ali9999@gmail.com <span aria-hidden="true">📧</span></a>
-          </div>
-          <div class="contact-item" role="listitem">
-            <i class="fas fa-map-marker-alt" aria-hidden="true" focusable="false"></i>
-            <span><span class="sr-only">Location:</span> Baghdad, Iraq <span aria-hidden="true">📍</span></span>
-          </div>
-          <div class="contact-item" role="listitem">
-            <i class="fab fa-linkedin" aria-hidden="true" focusable="false"></i>
-            <a href="https://www.linkedin.com/in/deadboyccc" target="_blank" rel="noopener noreferrer"
-              aria-label="Visit LinkedIn profile">linkedin.com/in/deadboyccc <span aria-hidden="true">🔗</span></a>
-          </div>
-          <div class="contact-item" role="listitem">
-            <i class="fab fa-github" aria-hidden="true" focusable="false"></i>
-            <a href="https://github.com/deadboyccc" target="_blank" rel="noopener noreferrer"
-              aria-label="Visit GitHub profile">github.com/deadboyccc <span aria-hidden="true">🐙</span></a>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="section" aria-labelledby="about-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: cat about.md">cat about.md</span>
-        </div>
-        <div class="output">
-          <h2 id="about-title" class="sr-only">About</h2>
-          <p class="about-text">
-            Seasoned Senior Backend Developer with 6+ years building cloud-native, high-throughput FinTech and
-            enterprise systems. Delivered secure APIs and integrations (Node.js, Spring Boot, ASP.NET Core, MuleSoft)
-            that handle 1k+ transactions/min and 10k+ active users while improving latency and reliability through
-            observability-driven tuning and CI/CD automation. Seeking senior backend or platform roles (remote or
-            relocation). <span aria-hidden="true">💡</span>
-          </p>
-        </div>
-      </section>
-
-      <!-- Experience Section -->
-      <section id="experience" class="section" aria-labelledby="experience-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: ls experience/">ls experience/</span>
-        </div>
-        <div class="output">
-          <h2 id="experience-title" class="sr-only">Experience</h2>
-          <div class="experience-grid">
-            <!-- ...existing code for each experience-item... -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills" class="section" aria-labelledby="skills-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: cat skills.json">cat skills.json</span>
-        </div>
-        <div class="output">
-          <h2 id="skills-title" class="sr-only">Skills</h2>
-          <div class="skills-container">
-            <div class="skill-category">
-              <h3>Programming Languages <span aria-hidden="true">📜</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">Kotlin</span>
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">C/C++</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">DataWeave</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Frameworks & Platforms <span aria-hidden="true">🚀</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">NestJS</span>
-                <span class="skill-tag">Express.js</span>
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">Spring WebFlux</span>
-                <span class="skill-tag">ASP.NET Core</span>
-                <span class="skill-tag">MuleSoft Anypoint</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Databases & Storage <span aria-hidden="true">💾</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">MS SQL Server</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">Redis</span>
-                <span class="skill-tag">Elasticsearch</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Messaging & Integration <span aria-hidden="true">🔄</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">RabbitMQ</span>
-                <span class="skill-tag">Apache Kafka</span>
-                <span class="skill-tag">ERP & FinTech Integration</span>
-                <span class="skill-tag">gRPC</span>
-                <span class="skill-tag">SOAP</span>
-                <span class="skill-tag">GraphQL</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Cloud & DevOps <span aria-hidden="true">☁️</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Kubernetes (EKS)</span>
-                <span class="skill-tag">AWS (EC2, EKS)</span>
-                <span class="skill-tag">GCP</span>
-                <span class="skill-tag">GitHub Actions</span>
-                <span class="skill-tag">Jenkins</span>
-                <span class="skill-tag">Bitbucket</span>
-                <span class="skill-tag">Maven</span>
-                <span class="skill-tag">Gradle</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Observability & Monitoring <span aria-hidden="true">📊</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Dynatrace</span>
-                <span class="skill-tag">Prometheus</span>
-                <span class="skill-tag">OpenTelemetry</span>
-                <span class="skill-tag">Grafana</span>
-                <span class="skill-tag">Kibana</span>
-                <span class="skill-tag">Anypoint Monitoring</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Testing & Quality <span aria-hidden="true">🧪</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">JUnit</span>
-                <span class="skill-tag">Mockito</span>
-                <span class="skill-tag">Jest</span>
-                <span class="skill-tag">Postman</span>
-                <span class="skill-tag">Testcontainers</span>
-                <span class="skill-tag">Integration Testing</span>
-                <span class="skill-tag">Unit Testing</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>Architecture & Principles <span aria-hidden="true">🏛️</span></h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Microservices</span>
-                <span class="skill-tag">Event-Driven Architecture</span>
-                <span class="skill-tag">Domain-Driven Design</span>
-                <span class="skill-tag">Clean Architecture</span>
-                <span class="skill-tag">SOLID</span>
-                <span class="skill-tag">TDD</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="section" aria-labelledby="projects-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: ls projects/">ls projects/</span>
-        </div>
-        <div class="output">
-          <h2 id="projects-title" class="sr-only">Projects</h2>
-          <div class="projects-grid">
-            <div class="project-item">
-              <h3>Early Start & Passion <span aria-hidden="true">🌟</span></h3>
-              <p>Began programming in BASIC at age 13; built foundational skills in logic and problem-solving through
-                rigorous high-school CS coursework. Continuously explore low-level programming, operating system
-                internals, and performance optimizations as personal learning projects.</p>
-            </div>
-            <div class="project-item">
-              <h3>FinTech & ERP Integration <span aria-hidden="true">💸</span></h3>
-              <p>Delivered secure, scalable backend systems integrating payment APIs, asynchronous messaging (RabbitMQ),
-                and ERP data pipelines—processing 1,000+ transactions per minute with end-to-end encryption and audit
-                trails.</p>
-            </div>
-            <div class="project-item">
-              <h3>Open Source Contributions <span aria-hidden="true">🤝</span></h3>
-              <p>Maintain and contribute to backend-focused GitHub repositories: microservices templates, integration
-                libraries, and performance monitoring tools. Sample projects include a TypeScript-based GraphQL gateway
-                and a performance profiling utility for Node.js microservices.</p>
-            </div>
-            <div class="project-item">
-              <h3>System Architecture Focus <span aria-hidden="true">🏗️</span></h3>
-              <p>Designed a cloud-native microservices reference architecture (Node.js + Spring Boot) for a mock
-                e-commerce platform—showcasing event-driven order processing and horizontal scaling. Published a
-                technical blog series on Medium detailing migration from monolithic Java apps to Kubernetes
-                microservices, covering CI/CD, observability, and cost optimization.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education Section -->
-      <section id="education" class="section" aria-labelledby="education-title">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label="Command: cat education.txt">cat education.txt</span>
-        </div>
-        <div class="output">
-          <h2 id="education-title" class="sr-only">Education</h2>
-          <div class="education-item">
-            <h3>American University of Iraq, Sulaimani (AUIS) <span aria-hidden="true">🎓</span></h3>
-            <p><strong>Full-Ride Merit Scholarship Recipient</strong> - Voluntarily left to pursue self-paced advanced
-              learning in backend development and system design.</p>
-          </div>
-          <div class="education-item">
-            <h3>Baghdad College High School <span aria-hidden="true">🏫</span></h3>
-            <p><strong>High School Diploma</strong> – GPA: 98/100</p>
-          </div>
-          <div class="education-item">
-            <h3>Certifications & Continuous Learning <span aria-hidden="true">📚</span></h3>
-            <ul class="cert-list" aria-label="Completed certifications">
-              <li>CS50x, CS50P, CS50W — Harvard University</li>
-              <li>MuleSoft Anypoint Platform Development Fundamentals (DEX401)</li>
-              <li>Various courses on Udemy, Coursera, edX, and MIT OCW covering backend development, distributed
-                systems, and system design</li>
-            </ul>
-            <div class="learning-areas">
-              <p class="section-subtitle">Current Focus Areas:</p>
-              <ul class="cert-list" aria-label="Current learning focus areas">
-                <li>Spring Ecosystem (Spring 6, Spring Boot 3, WebFlux, Jakarta EE)</li>
-                <li>Advanced PostgreSQL & Spring Data JPA/Hibernate</li>
-                <li>Cloud-Native Development (Spring Cloud, Docker, Kubernetes)</li>
-                <li>Event-Driven Architecture (Spring Kafka, Cloud Stream, SAGA)</li>
-                <li>Security & Modern APIs (Spring Security, gRPC, OAuth2)</li>
-                <li>Developer Productivity (Maven, Gradle, Testcontainers, Kotlin)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <section id="footer" class="section">
-        <div class="command-line">
-          <span class="prompt">$</span>
-          <span class="command" aria-label='Command: echo "Ready for new opportunities!"'>echo "Ready for new
-            opportunities! <span aria-hidden="true">👋</span>"</span>
-        </div>
-        <div class="output">
-          <p class="footer-text">Ready for new opportunities! <span aria-hidden="true">💼</span></p>
-          <p class="footer-subtext">References available upon request. <span aria-hidden="true">📄</span></p>
-        </div>
-      </section>
-    </main>
+    <div class="quick-links" role="toolbar" aria-label="Actions">
+      <button id="themeBtn" class="btn" title="Toggle theme" aria-pressed="false"><i class="fa-regular fa-sun icon" aria-hidden="true"></i><span class="sr-only">Toggle theme</span></button>
+      <a class="btn" href="#contact" title="Contact" aria-label="Jump to contact">Contact</a>
+      <a class="btn" href="#projects" title="Projects">Projects</a>
+    </div>
   </div>
-</body>
+</header>
 
-</html>
+<main id="main" class="cv" role="main">
+  <div class="grid" id="layout-grid">
+    <!-- Left / Primary content -->
+    <div class="content-section">
+
+      <!-- Professional Summary (snippet) -->
+      <section class="card" id="summary">
+        <div class="snippet-header">
+          <h2 class="snippet-title">Snippet — Professional Summary</h2>
+          <h3>Professional Summary</h3>
+        </div>
+        <p>
+          Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the
+          modern <strong>Spring ecosystem</strong>. Experienced in building <strong>cloud-native microservices</strong>
+          using Spring Boot (WebFlux), Kotlin, and Event-Driven Architectures (Kafka/RabbitMQ). Proficient in
+          deploying fault-tolerant FinTech and enterprise systems on AWS (EKS, Lambda, API Gateway) with robust
+          CI/CD automation. AWS Certified Solutions Architect & Developer with expertise in JVM optimization,
+          OAuth2/OIDC (Keycloak), distributed systems, low-level performance tuning (C/C++), and production-grade
+          observability (OpenTelemetry, Prometheus, Grafana).
+        </p>
+
+        <div class="tags" aria-hidden="false">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot (WebFlux)</span>
+          <span class="tag">Kotlin</span>
+          <span class="tag">AWS (EKS)</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">OpenTelemetry</span>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="card" id="experience">
+        <h2 class="snippet-title">Snippet — Experience</h2>
+        <h3>Experience</h3>
+
+        <!-- QiCard -->
+        <article class="experience-item" aria-labelledby="qicard-title">
+          <div class="meta"><div class="role" id="qicard-title">QiCard — Integration Engineer</div><div class="muted">Baghdad, Iraq — March 2025 – Present (On-site)</div></div>
+          <ul class="bullets">
+            <li>Completed MuleSoft Anypoint Platform Development Fundamentals (DEX401) and implemented API-led connectivity using RAML.</li>
+            <li>Designed and implemented System, Process, and Experience APIs — improving reusability and governance.</li>
+            <li>Built middleware for payment gateways and merchant services, reducing integration errors by 30%.</li>
+            <li>Used Dynatrace for APM and distributed tracing — optimized JVM and microservices performance, reducing response time by ~25%.</li>
+          </ul>
+        </article>
+
+        <!-- FFC -->
+        <article class="experience-item" aria-labelledby="ffc-title">
+          <div class="meta"><div class="role" id="ffc-title">FFC — Backend Developer</div><div class="muted">Baghdad, Iraq — Feb 2025 – Mar 2025 (Hybrid)</div></div>
+          <ul class="bullets">
+            <li>Integrated core financial business logic into a real-time mobile FinTech app with sub-second latency.</li>
+            <li>Transitioned an ERP PoC to production-grade API architecture, reducing manual processes by 40%.</li>
+            <li>Applied Redis caching, tuned PostgreSQL, and used circuit-breaker patterns for high availability.</li>
+          </ul>
+        </article>
+
+        <!-- CodeCraft -->
+        <article class="experience-item" aria-labelledby="codecraft-title">
+          <div class="meta"><div class="role" id="codecraft-title">CodeCraft — Backend Developer</div><div class="muted">Remote — Jun 2024 – Mar 2025 (Part-time)</div></div>
+          <ul class="bullets">
+            <li>Built REST, GraphQL, and SOAP APIs (Node.js, Express, TypeScript) serving 10k+ active users with 99.9% uptime.</li>
+            <li>Containerized microservices (Docker) and deployed to AWS (EC2, EKS) with Kubernetes HPA.</li>
+            <li>Configured CI/CD with GitHub Actions and Jenkins — reduced deployment time by 50%.</li>
+          </ul>
+        </article>
+
+        <!-- United Horizon -->
+        <article class="experience-item" aria-labelledby="uh-title">
+          <div class="meta"><div class="role" id="uh-title">United Horizon — IT Support Specialist</div><div class="muted">Baghdad, Iraq — Jan 2022 – Feb 2023 (On-site)</div></div>
+          <ul class="bullets">
+            <li>Provided Tier 1 & 2 support — resolved 200+ tickets/month and improved uptime to 99.8%.</li>
+            <li>Managed Windows & Linux servers and created an IT asset inventory system.</li>
+          </ul>
+        </article>
+
+      </section>
+
+      <!-- Projects & Highlights -->
+      <section class="card" id="projects">
+        <h2 class="snippet-title">Snippet — Projects & Technical Highlights</h2>
+        <h3>Projects & Technical Highlights</h3>
+        <div class="projects-grid">
+          <div>
+            <strong>FinTech & ERP Integration:</strong>
+            <p class="muted">Secure, scalable backends with async messaging (RabbitMQ, AWS SQS/SNS); processing 1k+ tx/min with encryption and audit trails.</p>
+          </div>
+
+          <div>
+            <strong>Cloud-native Microservices Reference Architecture:</strong>
+            <p class="muted">Node.js + Spring Boot microservices, AWS EKS orchestration, PostgreSQL/Aurora persistence.</p>
+          </div>
+
+          <div>
+            <strong>Open Source Contributions:</strong>
+            <p class="muted">Maintains repositories for microservices templates, integration libraries, and Node.js profiling utilities.</p>
+          </div>
+
+          <div>
+            <strong>Technical Blogging:</strong>
+            <p class="muted">Medium series on migrating monoliths to Kubernetes microservices (CI/CD, observability, cost optimization).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education & Certifications -->
+      <section class="card" id="education">
+        <h2 class="snippet-title">Snippet — Education & Certifications</h2>
+        <h3>Education</h3>
+        <p><strong>American University of Iraq, Sulaimani (AUIS)</strong> — Full-ride merit scholarship (voluntarily left for self-paced backend learning)</p>
+        <p><strong>Baghdad College High School</strong> — High School Diploma, GPA: 98/100</p>
+
+        <h3 style="margin-top:12px">Certifications</h3>
+        <ul class="bullets">
+          <li>CS50x, CS50P, CS50W — Harvard University</li>
+          <li>MuleSoft Anypoint Platform Development Fundamentals (DEX401)</li>
+          <li>Various Udemy, Coursera, edX, MIT OCW courses (backend, distributed systems, design)</li>
+        </ul>
+      </section>
+
+      <!-- Continuous learning & Interests -->
+      <section class="card" id="learning">
+        <h2 class="snippet-title">Snippet — Continuous Learning & Interests</h2>
+        <h3>Continuous Learning & Focus Areas</h3>
+        <p class="muted">Spring Boot/WebFlux, JVM tuning, PostgreSQL (EXPLAIN, indexing), Docker & Kubernetes (HPA, Helm), Kafka & event-driven patterns, security (OAuth2/OIDC), Testcontainers, Kotlin coroutines.</p>
+
+        <h3 style="margin-top:12px">Interests & Advocacy</h3>
+        <p class="muted">Rigorous engineering practices (TDD, clean code), low-level programming, mental health advocacy, climate action, open education. Enjoy hiking, meditation, running, gym, esports, and quiet nature.</p>
+      </section>
+
+    </div>
+
+    <!-- Right / Sidebar -->
+    <aside class="sidebar">
+      <section class="card profile" aria-labelledby="contact-title">
+        <h2 class="snippet-title">Snippet — Contact</h2>
+        <h3 id="contact-title">Contact</h3>
+
+        <div class="contact-list">
+          <a href="https://wa.me/9647711455264" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp message">
+            <i class="fab fa-whatsapp icon" aria-hidden="true"></i><span class="label">+964 771 145 5264</span>
+          </a>
+
+          <a href="mailto:ahmed.mohammed.ali9999@gmail.com" aria-label="Send email">
+            <i class="fa-regular fa-envelope icon" aria-hidden="true"></i><span class="label">ahmed.mohammed.ali9999@gmail.com</span>
+          </a>
+
+          <a href="https://linkedin.com/in/deadboyccc" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <i class="fab fa-linkedin icon" aria-hidden="true"></i><span class="label">linkedin.com/in/deadboyccc</span>
+          </a>
+
+          <a href="https://github.com/deadboyccc" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <i class="fab fa-github icon" aria-hidden="true"></i><span class="label">github.com/deadboyccc</span>
+          </a>
+
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+            <span class="muted" aria-hidden="true"><i class="fa-solid fa-location-dot" style="width:12px"></i> Baghdad, Iraq</span>
+            <span class="muted kbd" style="margin-left:6px">Open to remote & relocation</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:12px">
+        <h2 class="snippet-title">Snippet — Top Skills</h2>
+        <div class="skills" aria-label="Top technical skills">
+          <div class="skill-pill">Java</div>
+          <div class="skill-pill">Spring Boot / WebFlux</div>
+          <div class="skill-pill">Kotlin</div>
+          <div class="skill-pill">AWS (EKS, Lambda)</div>
+          <div class="skill-pill">Kafka / RabbitMQ</div>
+          <div class="skill-pill">PostgreSQL</div>
+          <div class="skill-pill">Docker & Kubernetes</div>
+          <div class="skill-pill">OpenTelemetry</div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:12px">
+        <h2 class="snippet-title">Snippet — Quick Links</h2>
+        <div style="display:flex;gap:8px;flex-direction:column">
+          <a class="btn" href="#projects">Projects</a>
+          <a class="btn" href="#education">Education</a>
+          <a class="btn" href="#summary">Summary</a>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <footer>
+    <p>Ready for new opportunities — References available upon request.</p>
+    <p class="muted">Last updated: Dec 31, 2025</p>
+  </footer>
+
+</main>
+
+  </div>  <script>
+    // Small, robust JS embedded for theme toggle and enhancement.
+    (function(){
+      const root = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      const saved = localStorage.getItem('pref-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial === 'light' ? 'light' : '');
+      themeBtn.setAttribute('aria-pressed', initial === 'light');
+
+      function updateBtn(){
+        const pressed = themeBtn.getAttribute('aria-pressed') === 'true';
+        themeBtn.innerHTML = pressed ? '<i class="fa-regular fa-moon icon" aria-hidden="true"></i><span class="sr-only">Switch to dark</span>' : '<i class="fa-regular fa-sun icon" aria-hidden="true"></i><span class="sr-only">Switch to light</span>';
+      }
+      updateBtn();
+
+      themeBtn.addEventListener('click', (e)=>{
+        const isLight = themeBtn.getAttribute('aria-pressed') === 'true';
+        if(isLight){
+          document.documentElement.removeAttribute('data-theme');
+          themeBtn.setAttribute('aria-pressed','false');
+          localStorage.setItem('pref-theme','dark');
+        } else {
+          document.documentElement.setAttribute('data-theme','light');
+          themeBtn.setAttribute('aria-pressed','true');
+          localStorage.setItem('pref-theme','light');
+        }
+        updateBtn();
+      });
+
+      // Smooth offset scrolling for internal anchors
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const href = this.getAttribute('href');
+          if(!href || href === '#') return;
+          const id = href.slice(1);
+          const el = document.getElementById(id);
+          if(!el) return;
+          e.preventDefault();
+          // compute offset from top (header height)
+          const header = document.querySelector('.app-header');
+          const headerH = header ? header.getBoundingClientRect().height : 0;
+          const top = window.pageYOffset + el.getBoundingClientRect().top - headerH - 12;
+          window.scrollTo({top, behavior:'smooth'});
+          // focus for accessibility
+          el.setAttribute('tabindex','-1');
+          el.focus({preventScroll:true});
+        });
+      });
+
+      // Improve reduced motion preference
+      if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        document.documentElement.style.scrollBehavior = 'auto';
+      }
+
+      // ensure keyboard-friendly focus for buttons
+      document.addEventListener('keyup', (e)=>{
+        if(e.key === 'Tab') document.body.classList.add('show-focus');
+      });
+    })();
+  </script></body>
+          </html>

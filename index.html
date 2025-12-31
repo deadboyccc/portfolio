@@ -17,9 +17,8 @@
       --accent: #000000;
       --dim: #666666;
       --border: #eeeeee;
-      --code-bg: #f7f7f7;
       --highlight: #2563eb;
-      --max-width: 900px;
+      --max-width: 850px;
     }
 
     [data-theme="dark"] {
@@ -28,7 +27,6 @@
       --accent: #ffffff;
       --dim: #a0a0a0;
       --border: #1f1f1f;
-      --code-bg: #161616;
       --highlight: #60a5fa;
     }
 
@@ -46,58 +44,55 @@
 
     /* Typography */
     h1 { font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 8px; }
-    h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
     h2::after { content: ""; height: 1px; background: var(--border); flex: 1; }
-    h3 { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+    h3 { font-size: 18px; font-weight: 700; color: var(--accent); margin-top: 32px; margin-bottom: 12px; }
     .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
 
-    /* Header */
+    /* Header & Contact */
     header { margin-bottom: 64px; }
-    .contact-grid { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 20px; font-size: 14px; }
+    .contact-grid { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; font-size: 14px; font-family: 'JetBrains Mono'; }
     .contact-link { color: var(--dim); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
     .contact-link:hover { color: var(--highlight); }
 
-    /* Sections */
-    section { margin-bottom: 64px; }
-    .summary-text { font-size: 18px; color: var(--fg); margin-bottom: 24px; font-weight: 400; line-height: 1.5; }
-    
-    /* Skills */
-    .skills-category { margin-bottom: 20px; display: grid; grid-template-columns: 200px 1fr; gap: 16px; }
-    .skills-label { font-weight: 600; font-size: 14px; color: var(--accent); }
-    .skills-list { color: var(--dim); font-size: 14px; }
+    /* Layout Sections */
+    section { margin-bottom: 56px; }
+    p { margin-bottom: 16px; font-size: 15px; }
+    strong { color: var(--accent); font-weight: 600; }
+
+    /* Skills Grid */
+    .skills-item { margin-bottom: 18px; }
+    .skills-label { font-weight: 700; font-size: 14px; color: var(--accent); margin-bottom: 4px; display: block; }
+    .skills-content { color: var(--dim); font-size: 14px; }
 
     /* Experience */
-    .experience-item { margin-bottom: 40px; }
-    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-    .exp-title { font-weight: 600; font-size: 16px; color: var(--accent); }
-    .exp-meta { font-size: 13px; color: var(--dim); font-family: 'JetBrains Mono'; }
-    .exp-bullets { list-style: none; }
-    .exp-bullets li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 14px; color: var(--fg); }
-    .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--dim); }
+    .exp-block { margin-bottom: 48px; }
+    .exp-header { margin-bottom: 12px; }
+    .exp-title { font-size: 18px; font-weight: 700; color: var(--accent); }
+    .exp-sub { font-size: 14px; color: var(--highlight); font-weight: 600; margin-bottom: 4px; }
+    .exp-meta { font-size: 12px; color: var(--dim); font-family: 'JetBrains Mono'; }
+    .exp-list { list-style: none; }
+    .exp-list li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 14px; }
+    .exp-list li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
 
-    /* Project Cards */
-    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .project-card { border: 1px solid var(--border); padding: 20px; border-radius: 4px; }
-    .project-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
-    .project-card p { font-size: 13px; color: var(--dim); }
+    /* Projects & Lists */
+    .simple-list { list-style: none; }
+    .simple-list li { margin-bottom: 12px; font-size: 14px; position: relative; padding-left: 20px; }
+    .simple-list li::before { content: "-"; position: absolute; left: 0; color: var(--dim); }
+
+    /* Education & Others */
+    .edu-item { margin-bottom: 16px; }
+    .edu-name { font-weight: 700; color: var(--accent); font-size: 15px; }
+    .edu-desc { color: var(--dim); font-size: 14px; }
 
     /* Theme Toggle */
     .theme-toggle { position: fixed; top: 40px; right: 40px; background: none; border: 1px solid var(--border); color: var(--dim); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
 
-    /* Footer */
-    footer { border-top: 1px solid var(--border); padding-top: 40px; font-size: 13px; color: var(--dim); text-align: center; }
+    footer { border-top: 1px solid var(--border); padding-top: 40px; font-size: 12px; color: var(--dim); text-align: center; font-family: 'JetBrains Mono'; }
 
     @media (max-width: 768px) {
       .container { padding: 40px 24px; }
-      .skills-category { grid-template-columns: 1fr; gap: 4px; }
-      .exp-header { flex-direction: column; gap: 4px; }
-      .project-grid { grid-template-columns: 1fr; }
       .theme-toggle { top: 20px; right: 20px; }
-    }
-    
-    @media print {
-      .theme-toggle { display: none; }
-      .container { padding: 0; }
     }
   </style>
 </head>
@@ -110,168 +105,204 @@
   <div class="container">
     <header>
       <h1>Ahmed Mohammed Ali</h1>
-      <p class="mono" style="color:var(--highlight); font-weight:500;">Senior Backend Engineer</p>
-      
       <div class="contact-grid">
-        <a href="mailto:ahmed.mohammed.ali9999@gmail.com" class="contact-link"><i class="fa-regular fa-envelope"></i> ahmed.mohammed.ali9999@gmail.com</a>
-        <a href="https://wa.me/9647711455264" class="contact-link"><i class="fa-brands fa-whatsapp"></i> +964 771 145 5264</a>
-        <a href="https://linkedin.com/in/deadboyccc" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/deadboyccc" class="contact-link"><i class="fa-brands fa-github"></i> GitHub</a>
-        <span class="contact-link"><i class="fa-solid fa-location-dot"></i> Baghdad, Iraq</span>
+        <span>Baghdad, Iraq</span>
+        <a href="https://wa.me/9647711455264" class="contact-link">+964 771 145 5264 (WhatsApp only)</a>
+        <a href="mailto:ahmed.mohammed.ali9999@gmail.com" class="contact-link">ahmed.mohammed.ali9999@gmail.com</a>
+        <a href="https://linkedin.com/in/deadboyccc" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/deadboyccc" class="contact-link">GitHub</a>
       </div>
     </header>
 
     <section id="summary">
       <h2>Professional Summary</h2>
-      <p class="summary-text">
-        Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the <strong>Spring ecosystem</strong>. Expert in building cloud-native microservices (WebFlux, Kotlin) and event-driven architectures (Kafka/RabbitMQ). 
+      <p>
+        Senior Backend Engineer with a decade-long passion for code, specializing in <strong>Java</strong> and the modern <strong>Spring ecosystem</strong>. Experienced in building <strong>cloud-native microservices</strong> using Spring Boot (WebFlux), Kotlin, and Event-Driven Architectures (Kafka/RabbitMQ). Proficient in deploying <strong>fault-tolerant FinTech and enterprise systems</strong> on AWS (EKS, Lambda, API Gateway) with robust CI/CD automation. AWS Certified Solutions Architect & Developer with expertise in <strong>JVM optimization, OAuth2/OIDC (Keycloak), distributed systems, low-level performance tuning (C/C++)</strong>, and production-grade observability (OpenTelemetry, Prometheus, Grafana).
       </p>
-      <p style="color: var(--dim); font-size: 15px;">
-        Proven track record in deploying fault-tolerant FinTech systems on AWS. Specialized in JVM optimization, OAuth2/OIDC, distributed systems, and low-level performance tuning (C/C++).
+    </section>
+
+    <section id="passion">
+      <h2>Early Start & Passion</h2>
+      <p>
+        Began programming in <strong>BASIC at age 13</strong>; built foundational skills in logic and problem-solving through high-school CS coursework. Continually explores low-level programming, operating system internals, and performance optimizations through personal projects.
       </p>
-      <div class="mono" style="margin-top: 20px; font-size: 12px; color: var(--highlight);">
-        &gt; Early start in BASIC at age 13; focused on OS internals and logic.
-      </div>
     </section>
 
     <section id="skills">
-      <h2>Technical Arsenal</h2>
-      
-      <div class="skills-category">
-        <div class="skills-label">Languages</div>
-        <div class="skills-list">Java, Kotlin (Coroutines, WebFlux), C/C++, C#, Python, Node.js, TypeScript, JavaScript</div>
+      <h2>Technical Skills</h2>
+      <div class="skills-item">
+        <span class="skills-label">Programming & Scripting:</span>
+        <span class="skills-content">Java, Kotlin (Coroutines, WebFlux), C/C++, C#, Python, Node.js, TypeScript, JavaScript</span>
       </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Backend & Frameworks</div>
-        <div class="skills-list">Spring Boot, Spring Cloud, JPA/Hibernate, Jakarta EE, NestJS, Express.js, ASP.NET Core, MuleSoft Anypoint, Spring AI</div>
+      <div class="skills-item">
+        <span class="skills-label">Backend & Frameworks:</span>
+        <span class="skills-content">Spring Boot (WebFlux), Spring Cloud, Spring JPA/Hibernate, Jakarta EE, NestJS, Express.js, ASP.NET Core, MuleSoft Anypoint Platform, Spring AI integrations</span>
       </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Cloud & DevOps</div>
-        <div class="skills-list">AWS (EKS, Lambda, S3, RDS/Aurora, API Gateway), GCP, Docker, Kubernetes (Helm), CI/CD (GitHub Actions, Jenkins, Bitbucket)</div>
+      <div class="skills-item">
+        <span class="skills-label">Cloud & DevOps:</span>
+        <span class="skills-content">AWS (EKS, Lambda, S3, RDS/Aurora, API Gateway, IAM), GCP; Docker, Kubernetes (multi-stage builds, HPA, Helm), CI/CD (GitHub Actions, Jenkins, Bitbucket)</span>
       </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Infrastructure</div>
-        <div class="skills-list">PostgreSQL (Replication, Partitioning), DynamoDB, MongoDB, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, GraphQL</div>
+      <div class="skills-item">
+        <span class="skills-label">Databases & Data Management:</span>
+        <span class="skills-content">PostgreSQL (indexing, replication, partitioning, EXPLAIN), DynamoDB, MongoDB, Redis, Elasticsearch</span>
       </div>
-
-      <div class="skills-category">
-        <div class="skills-label">Observability</div>
-        <div class="skills-list">OpenTelemetry, Prometheus, Grafana, Dynatrace, ELK Stack, AWS X-Ray, Anypoint Monitoring</div>
+      <div class="skills-item">
+        <span class="skills-label">Messaging & Event-Driven Systems:</span>
+        <span class="skills-content">Kafka (Streams, Avro, Schema Registry), RabbitMQ, AWS SQS/SNS/EventBridge; gRPC (Protobuf & streaming), GraphQL, SOAP</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Architecture & Best Practices:</span>
+        <span class="skills-content">Microservices, Event-Driven Design, Domain-Driven Design (DDD), SOLID principles, Clean Architecture, TDD, JVM tuning & performance optimization</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Observability & Monitoring:</span>
+        <span class="skills-content">OpenTelemetry, Prometheus, Grafana, Dynatrace, ELK Stack, AWS X-Ray, Anypoint Monitoring</span>
       </div>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
 
-      <div class="experience-item">
+      <div class="exp-block">
         <div class="exp-header">
-          <div class="exp-title">QiCard — Integration Engineer</div>
-          <div class="exp-meta">Mar 2025 — Present</div>
+          <div class="exp-title">QiCard | Baghdad, Iraq</div>
+          <div class="exp-sub">Integration Engineer | On-site (Full-time)</div>
+          <div class="exp-meta">March 2025 – Present</div>
         </div>
-        <ul class="exp-bullets">
-          <li>Leveraged MuleSoft Anypoint and API-led connectivity to orchestrate enterprise integrations.</li>
-          <li>Implemented System, Process, and Experience APIs using RAML, reducing integration errors by 30%.</li>
-          <li>Developed middleware for payment gateways and merchant services using DataWeave and Java.</li>
-          <li>Optimized microservices via Dynatrace APM, reducing average response time by 25%.</li>
-          <li>Managed automated deployments using Maven, Bitbucket, and Jenkins in an Agile framework.</li>
+        <ul class="exp-list">
+          <li>Completed MuleSoft Anypoint Platform Development Fundamentals (DEX401) and leveraged API-led connectivity to orchestrate seamless enterprise integrations.</li>
+          <li>Designed, documented, and implemented System, Process, and Experience APIs using RAML—ensuring modularity, reusability, and consistent data schemas.</li>
+          <li>Developed middleware layers for payment gateways, merchant services, and internal systems; improved data flow consistency and reduced integration errors by 30%.</li>
+          <li>Authored complex DataWeave scripts and analyzed Java codebases to align integration flows with backend business logic.</li>
+          <li>Implemented advanced error-handling patterns, connector configurations, and policies; maintained CI/CD pipelines with Maven, Bitbucket, and Jenkins for automated deployments.</li>
+          <li>Collaborated with cross-regional teams (Egypt, UAE) to coordinate deployments, enforce governance, and maintain quality standards across environments.</li>
+          <li>Utilized Dynatrace for APM and distributed tracing—monitoring CPU, JVM, heap, and thread metrics; optimized microservices performance, reducing average response time by 25%.</li>
+          <li>Employed Anypoint Monitoring and Analytics to track throughput and latency under peak loads; recommended infrastructure scaling and load-balancing strategies.</li>
+          <li>Actively contributed to sprint planning and backlog refinement within an Agile framework, ensuring timely delivery of integration features.</li>
         </ul>
       </div>
 
-      <div class="experience-item">
+      <div class="exp-block">
         <div class="exp-header">
-          <div class="exp-title">FFC — Backend Developer</div>
-          <div class="exp-meta">Feb 2025 — Mar 2025</div>
+          <div class="exp-title">FFC | Baghdad, Iraq</div>
+          <div class="exp-sub">Backend Developer | Hybrid (Full-time)</div>
+          <div class="exp-meta">February 2025 – March 2025</div>
         </div>
-        <ul class="exp-bullets">
-          <li>Integrated core financial logic into real-time mobile FinTech apps with sub-second latency.</li>
-          <li>Transitioned ERP PoC to production-grade API architecture, reducing manual processes by 40%.</li>
-          <li>Architected decoupled backends with robust audit logging, exception traceability, and RBAC.</li>
-          <li>Optimized PostgreSQL and Redis caching; implemented circuit-breaker patterns for high availability.</li>
+        <ul class="exp-list">
+          <li>Integrated core financial business logic into a real-time mobile FinTech application, enabling secure user transactions with sub-second latency.</li>
+          <li>Led the transition from an ERP proof-of-concept to a production-grade API architecture—delivering automated workflows and reducing manual processes by 40%.</li>
+          <li>Architected a multi-layered, decoupled backend with robust audit logging, exception traceability, and role-based access control (RBAC), enhancing system reliability and compliance.</li>
+          <li>Tuned PostgreSQL queries, implemented Redis caching strategies, and applied circuit-breaker patterns to ensure high availability and data integrity.</li>
+          <li>Conducted performance profiling (JVM, SQL) and implemented optimizations that improved overall API throughput by 20%.</li>
         </ul>
       </div>
 
-      <div class="experience-item">
+      <div class="exp-block">
         <div class="exp-header">
-          <div class="exp-title">CodeCraft — Backend Developer</div>
-          <div class="exp-meta">Jun 2024 — Mar 2025</div>
+          <div class="exp-title">CodeCraft | Baghdad, Iraq</div>
+          <div class="exp-sub">Backend Developer | Remote (Part-time)</div>
+          <div class="exp-meta">June 2024 – March 2025</div>
         </div>
-        <ul class="exp-bullets">
-          <li>Maintained REST, GraphQL, and SOAP APIs (Node.js/TS) serving 10k+ active users.</li>
-          <li>Optimized database strategies (indexing, connection pooling), improving query times by 35%.</li>
-          <li>Deployed microservices to AWS EKS with Kubernetes horizontal pod autoscaling.</li>
-          <li>Achieved 95% code coverage with Jest/Postman; reduced unauthorized access incidents to near zero.</li>
+        <ul class="exp-list">
+          <li>Designed, developed, and maintained production-grade REST, GraphQL, and SOAP APIs using Node.js, Express.js, and TypeScript—serving 10k+ active users with 99.9% uptime.</li>
+          <li>Implemented JWT-based authentication, RBAC, and secure login flows; reduced unauthorized access incidents to near zero.</li>
+          <li>Optimized MongoDB and PostgreSQL databases by refining indexing strategies, connection pooling, and caching with Mongoose and Sequelize—improving average query times by 35%.</li>
+          <li>Containerized microservices with Docker, deployed to AWS (EC2, EKS), and configured Kubernetes horizontal pod autoscaling—enabling seamless scaling under variable loads.</li>
+          <li>Configured CI/CD pipelines using GitHub Actions and Jenkins for regression-free deployments; achieved a 50% reduction in deployment time.</li>
+          <li>Applied Domain-Driven Design (DDD) and Clean Architecture principles to decouple business logic, improving code maintainability and facilitating rapid feature additions.</li>
+          <li>Leveraged low-level networking knowledge (C++) to optimize request handling and reduce latency under high-concurrency scenarios.</li>
+          <li>Wrote comprehensive test suites with Jest and Postman for unit and integration testing, ensuring 95% code coverage and minimal production bugs.</li>
         </ul>
       </div>
 
-      <div class="experience-item">
+      <div class="exp-block">
         <div class="exp-header">
-          <div class="exp-title">United Horizon — IT Support Specialist</div>
-          <div class="exp-meta">Jan 2022 — Feb 2023</div>
+          <div class="exp-title">United Horizon | Baghdad, Iraq</div>
+          <div class="exp-sub">IT Support Specialist | On-site (Full-time)</div>
+          <div class="exp-meta">January 2022 – February 2023</div>
         </div>
-        <ul class="exp-bullets">
-          <li>Resolved 200+ monthly tickets for hardware/networking, maintaining 99.8% system uptime.</li>
-          <li>Managed Windows and Linux server environments for critical internal services.</li>
+        <ul class="exp-list">
+          <li>Provided Tier 1 and Tier 2 technical support for hardware, software, and networking issues—resolving 200+ tickets per month and improving system uptime to 99.8%.</li>
+          <li>Managed installation, configuration, and maintenance of Windows and Linux server environments, ensuring high availability for critical internal services.</li>
+          <li>Created and maintained an IT asset inventory system, streamlining hardware tracking and reducing resource allocation errors by 25%.</li>
+          <li>Trained end users on system best practices and security policies, leading to a 40% decrease in recurring incidents.</li>
         </ul>
       </div>
     </section>
 
     <section id="projects">
-      <h2>Technical Highlights</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h4>FinTech & ERP Integration</h4>
-          <p>Processing 1k+ transactions/min with asynchronous messaging (RabbitMQ/SQS) and full audit trails.</p>
-        </div>
-        <div class="project-card">
-          <h4>Microservices Reference Architecture</h4>
-          <p>Full-stack AWS EKS orchestration using Spring Boot, Aurora, and OpenTelemetry.</p>
-        </div>
-        <div class="project-card">
-          <h4>Open Source & Tooling</h4>
-          <p>Maintains GitHub repositories for Node.js performance utilities and microservices templates.</p>
-        </div>
-        <div class="project-card">
-          <h4>Technical Advocacy</h4>
-          <p>Author of a Medium series on migrating monolithic Java applications to Kubernetes.</p>
-        </div>
-      </div>
+      <h2>Projects & Technical Highlights</h2>
+      <ul class="simple-list">
+        <li><strong>FinTech & ERP Integration:</strong> Secure, scalable backend systems; asynchronous messaging (RabbitMQ, AWS SQS/SNS); processing 1k+ transactions/min with encryption and audit trails</li>
+        <li><strong>Cloud-native Microservices Reference Architecture:</strong> Node.js + Spring Boot microservices; AWS EKS orchestration; PostgreSQL/Aurora persistence</li>
+        <li><strong>Open Source Contributions:</strong> Maintains GitHub repos for microservices templates, integration libraries, and Node.js performance utilities</li>
+        <li><strong>Technical Blogging:</strong> Medium series on migrating monolithic Java apps to Kubernetes microservices</li>
+      </ul>
     </section>
 
     <section id="education">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-        <div>
-          <h2>Education</h2>
-          <div style="margin-bottom: 16px;">
-            <p style="font-weight:600; font-size:14px;">AUIS</p>
-            <p style="font-size:13px; color:var(--dim);">Full-ride Merit Scholarship (Advanced Backend focus)</p>
-          </div>
-          <div>
-            <p style="font-weight:600; font-size:14px;">Baghdad College High School</p>
-            <p style="font-size:13px; color:var(--dim);">Diploma — GPA: 98/100</p>
-          </div>
-        </div>
-        <div>
-          <h2>Continuous Focus</h2>
-          <p class="mono" style="font-size:11px; color:var(--dim);">
-            Spring AI, Resilience4j, SAGA patterns, Testcontainers, Kotlin Coroutines, Serverless, AWS Fargate.
-          </p>
-        </div>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div class="edu-name">American University of Iraq, Sulaimani (AUIS)</div>
+        <div class="edu-desc">Full-ride merit scholarship (voluntarily left for self-paced advanced backend development learning)</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-name">Baghdad College High School</div>
+        <div class="edu-desc">High School Diploma, GPA: 98/100</div>
       </div>
     </section>
 
-    <section id="advocacy">
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul class="simple-list">
+        <li>CS50x, CS50P, CS50W — Harvard University</li>
+        <li>MuleSoft Anypoint Platform Development Fundamentals (DEX401)</li>
+        <li>Various Udemy, Coursera, edX, MIT OCW courses in backend development, distributed systems, and system design</li>
+      </ul>
+    </section>
+
+    <section id="learning">
+      <h2>Continuous Learning & Focus Areas</h2>
+      <div class="skills-item">
+        <span class="skills-label">Spring Ecosystem & Backend:</span>
+        <span class="skills-content">Spring Boot/WebFlux, DI, Jakarta EE updates, Spring Cloud, Resilience4j, Spring AI integrations</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Data & Persistence:</span>
+        <span class="skills-content">PostgreSQL (EXPLAIN, indexing, replication, partitioning), Spring JPA/Hibernate, RDS/Aurora, DynamoDB</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Microservices & Cloud:</span>
+        <span class="skills-content">Docker, Kubernetes (multi-stage builds, HPA, Helm), AWS ECS/Fargate, Lambda/API Gateway, Serverless, GKE/Cloud Run</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Messaging & Events:</span>
+        <span class="skills-content">Kafka (Streams, Avro), Spring Cloud Stream, SAGA patterns, AWS SQS/SNS/EventBridge</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Security & APIs:</span>
+        <span class="skills-content">Spring Security (OAuth2/OIDC, JWT), gRPC, AWS IAM/Secrets Manager/KMS</span>
+      </div>
+      <div class="skills-item">
+        <span class="skills-label">Tooling & Testing:</span>
+        <span class="skills-content">Maven & Gradle, Testcontainers, Kotlin Coroutines</span>
+      </div>
+    </section>
+
+    <section id="interests">
       <h2>Interests & Advocacy</h2>
-      <p style="font-size:14px; color:var(--dim);">
-        Rigorous engineering (TDD, Clean Code), physics, and systems thinking. Advocate for open education, mental health, and animal welfare. Enjoys hiking, meditation, and text-based async communication.
+      <p>
+        Focus on <strong>rigorous engineering practices</strong> (TDD, clean code, low-level programming, competitive programming). Lifelong learning in physics, mathematics, and CS. Advocate for <strong>open education, mental health, sustainability, children’s rights, climate action, and animal welfare</strong>. Enjoy hiking, meditation, running, gym, esports, and quiet nature environments. Systems-thinking enthusiast who values ergonomic, aesthetic, and cozy setups; collects aphorisms. Prefers <strong>text-based asynchronous communication</strong>.
       </p>
+    </section>
+
+    <section id="references">
+      <h2>References</h2>
+      <p>Available upon request.</p>
     </section>
 
     <footer>
       <p>Ahmed Mohammed Ali — 2025</p>
-      <p class="mono" style="margin-top:8px; font-size:11px;">References available upon request.</p>
     </footer>
   </div>
 

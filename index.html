@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ahmed Mohammed Ali — Senior Backend Engineer</title>
+  <title>Ahmed Mohammed Ali \u2014 Senior Backend Engineer</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,8 @@
     .container { max-width: var(--max-width); margin: 0 auto; padding: 80px 40px; }
 
     /* Typography */
-    h1 { font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 8px; }
+    h1 { font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 6px; }
+    .header-subtitle { font-size: 14px; color: var(--dim); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
     h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
     h2::after { content: ""; height: 1px; background: var(--border); flex: 1; }
     h3 { font-size: 18px; font-weight: 700; color: var(--accent); margin-top: 32px; margin-bottom: 12px; }
@@ -69,12 +70,11 @@
     .exp-block { margin-bottom: 48px; }
     .exp-header { margin-bottom: 12px; }
     .exp-title { font-size: 18px; font-weight: 700; color: var(--accent); }
-    /* Changed color to var(--accent) to remove the blue color on job titles */
     .exp-sub { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
     .exp-meta { font-size: 12px; color: var(--dim); font-family: 'JetBrains Mono'; }
     .exp-list { list-style: none; }
     .exp-list li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 14px; }
-    .exp-list li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+    .exp-list li::before { content: "\u2022"; position: absolute; left: 0; color: var(--highlight); }
 
     /* Projects & Lists */
     .simple-list { list-style: none; }
@@ -106,6 +106,7 @@
   <div class="container">
     <header>
       <h1>Ahmed Mohammed Ali</h1>
+      <div class="header-subtitle">Senior Backend Engineer | Solutions Architect | Freelance Consultant</div>
       <div class="contact-grid">
         <span>Baghdad, Iraq</span>
         <a href="https://wa.me/9647711455264" class="contact-link">+964 771 145 5264 (WhatsApp)</a>
@@ -125,7 +126,7 @@
     <section id="passion">
       <h2>The Early Start</h2>
       <p>
-        Began programming in <strong>BASIC at age 13</strong>; built foundational skills in logic/CS early on. Continually explores low-level programming (C/C++), OS internals, and performance optimizations.
+        Began programming in <strong>BASIC at age 13</strong> \u2014 built foundational skills in logic and CS early on. Continually explores low-level programming (C/C++), OS internals, and performance optimizations.
       </p>
     </section>
 
@@ -160,132 +161,4 @@
         <span class="skills-content">Kafka (Streams, Avro), RabbitMQ, AWS SQS/SNS, MuleSoft Anypoint, gRPC, GraphQL.</span>
       </div>
       <div class="skills-item">
-        <span class="skills-label">Security:</span>
-        <span class="skills-content">OAuth2/OIDC (Keycloak), JWT, Spring Security, RBAC.</span>
-      </div>
-      <div class="skills-item">
-        <span class="skills-label">Observability:</span>
-        <span class="skills-content">OpenTelemetry, Prometheus, Grafana, Dynatrace, ELK Stack, AWS X-Ray.</span>
-      </div>
-    </section>
-
-    <section id="experience">
-      <h2>Professional Experience</h2>
-
-      <div class="exp-block">
-        <div class="exp-header">
-          <div class="exp-title">QiCard | Baghdad, Iraq</div>
-          <div class="exp-sub">Integration Engineer | On-site</div>
-          <div class="exp-meta">March 2025 – Present</div>
-        </div>
-        <ul class="exp-list">
-          <li><strong>System Design & Integration:</strong> Orchestrated enterprise integrations using <strong>MuleSoft</strong> and <strong>Java</strong>, designing System, Process, and Experience APIs (RAML) to ensure modularity and <strong>resilient service</strong> delivery.</li>
-          <li><strong>Performance Optimization:</strong> Utilized <strong>Dynatrace</strong> for APM/tracing; optimized JVM heap/threads and microservices, reducing response times by <strong>25%</strong>.</li>
-          <li><strong>Reliability:</strong> Implemented advanced error-handling and circuit breakers for payment gateways, reducing integration errors by <strong>30%</strong>.</li>
-          <li><strong>CI/CD:</strong> Maintained pipelines via Bitbucket and Jenkins for automated, quality-assured deployments.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-header">
-          <div class="exp-title">FFC | Baghdad, Iraq</div>
-          <div class="exp-sub">Backend Developer | Hybrid</div>
-          <div class="exp-meta">Feb 2025 – March 2025</div>
-        </div>
-        <ul class="exp-list">
-          <li><strong>Architecture Transformation:</strong> Led the transition from ERP proof-of-concept to a production-grade <strong>API architecture</strong>, reducing manual processes by <strong>40%</strong>.</li>
-          <li><strong>High-Quality Code:</strong> Architected a decoupled backend with RBAC and audit logging; enforced strict code quality standards and <strong>Clean Architecture</strong>.</li>
-          <li><strong>Optimization:</strong> Tuned <strong>PostgreSQL</strong> queries and implemented <strong>Redis</strong> caching, improving API throughput by <strong>20%</strong> and ensuring sub-second latency for FinTech transactions.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-header">
-          <div class="exp-title">CodeCraft</div>
-          <div class="exp-sub">Backend Developer | Remote</div>
-          <div class="exp-meta">June 2024 – March 2025</div>
-        </div>
-        <ul class="exp-list">
-          <li><strong>Cloud-Native Deployment:</strong> Containerized microservices using <strong>Docker</strong> and orchestrated them on <strong>AWS EKS</strong> and <strong>Fargate</strong>. Managed complex deployments using <strong>Helm</strong> charts and configured Horizontal Pod Autoscaling (HPA).</li>
-          <li><strong>CI/CD Automation:</strong> Built and maintained robust CI/CD pipelines using <strong>GitHub Actions</strong>, achieving a <strong>50% reduction</strong> in deployment time and ensuring regression-free releases.</li>
-          <li><strong>Scalable Systems:</strong> Designed REST/GraphQL APIs (Node.js/TypeScript) serving 10k+ users with <strong>99.9% uptime</strong>.</li>
-          <li><strong>Database Performance:</strong> Optimized MongoDB and PostgreSQL via indexing and connection pooling, improving query times by <strong>35%</strong>.</li>
-          <li><strong>Low-Level Optimization:</strong> Leveraged C++ networking knowledge to optimize request handling under high concurrency.</li>
-        </ul>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-header">
-          <div class="exp-title">United Horizon | Baghdad, Iraq</div>
-          <div class="exp-sub">IT Support Specialist | On-site</div>
-          <div class="exp-meta">Jan 2022 – Feb 2023</div>
-        </div>
-        <ul class="exp-list">
-          <li>Resolved 200+ tickets/month (Tier 1 & 2); managed Linux/Windows server environments ensuring 99.8% system uptime.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Key Projects & Contributions</h2>
-      <ul class="simple-list">
-        <li><strong>Cloud-Native Reference Architecture:</strong> Built a reference implementation for <strong>Spring Boot</strong> microservices on <strong>AWS EKS</strong> using <strong>Helm</strong> and <strong>Fargate</strong>, demonstrating best practices in resilience and <strong>System Design</strong>.</li>
-        <li><strong>FinTech ERP System:</strong> Secure backend processing 1k+ transactions/min using asynchronous messaging (<strong>RabbitMQ</strong>, AWS SQS) with full audit trails.</li>
-        <li><strong>Open Source:</strong> Actively maintains GitHub repos for microservice templates, integration libraries, and Node.js performance tools.</li>
-        <li><strong>Writing:</strong> Authors technical articles on migrating monolithic Java apps to Kubernetes-based microservices.</li>
-      </ul>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <div class="edu-item">
-        <div class="edu-name">Baghdad College High School</div>
-        <div class="edu-desc">High School Diploma (GPA: 98/100).</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-name">American University of Iraq, Sulaimani (AUIS)</div>
-        <div class="edu-desc">Full-ride merit scholarship (Voluntarily left to pursue advanced, self-paced learning).</div>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul class="simple-list">
-        <li>MuleSoft Dev Fundamentals (DEX401)</li>
-        <li>CS50x/CS50P/CS50W (Harvard University)</li>
-      </ul>
-    </section>
-
-    <section id="interests">
-      <h2>Interests, Advocacy & Trivia</h2>
-      <ul class="simple-list">
-        <li><strong>Engineering Philosophy:</strong> Advocate for <strong>rigorous engineering practices</strong> (TDD, competitive programming, low-level logic) and systems thinking.</li>
-        <li><strong>Advocacy:</strong> Open education, mental health awareness, sustainability, children’s rights, climate action, and animal welfare.</li>
-        <li><strong>Personal:</strong> Enjoys hiking, meditation, running, esports, and quiet nature environments. Enthusiast of ergonomic, cozy setups and aphorism collecting.</li>
-        <li><strong>Communication Style:</strong> Prefers <strong>text-based asynchronous communication</strong> for depth and clarity.</li>
-      </ul>
-    </section>
-
-    <section id="references">
-      <h2>References</h2>
-      <p>Available upon request.</p>
-    </section>
-
-    <footer>
-      <p>Ahmed Mohammed Ali — 2025</p>
-    </footer>
-  </div>
-
-  <script>
-    const themeBtn = document.getElementById('themeBtn');
-    const body = document.body;
-    const icon = themeBtn.querySelector('i');
-
-    themeBtn.addEventListener('click', () => {
-      const isDark = body.getAttribute('data-theme') === 'dark';
-      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    });
-  </script>
-</body>
-</html>
+        <span class="skills-label
